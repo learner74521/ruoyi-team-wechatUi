@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "plaza": "/pages/plazahome/plaza/plaza",
+    "find": "/pages/findhome/find/find",
+    "team": "/pages/teamhome/team/team",
+    "news": "/pages/newshome/news/news",
+    "myhome": "/pages/myhome/home/home"
+  }
+}
