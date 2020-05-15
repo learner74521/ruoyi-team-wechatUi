@@ -1,9 +1,9 @@
 {
   "usingComponents": {
-    "plaza": "/pages/plazahome/plaza/plaza",
-    "find": "/pages/findhome/find/find",
-    "team": "/pages/teamhome/team/team",
-    "news": "/pages/newshome/news/news",
+    "plaza": "/pages/plazahome/home/home",
+    "find": "/pages/findhome/home/home",
+    "team": "/pages/teamhome/home/home",
+    "news": "/pages/newshome/home/home",
     "myhome": "/pages/myhome/home/home"
   }
 }
