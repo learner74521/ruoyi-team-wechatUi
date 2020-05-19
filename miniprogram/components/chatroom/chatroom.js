@@ -3,8 +3,12 @@ const SETDATA_SCROLL_TO_BOTTOM = {
   scrollTop: 100000,
   scrollWithAnimation: true,
 }
-
+const app=getApp();
 Component({
+  options: {
+    addGlobalClass: true,
+    multipleSlots: true
+  },
   properties: {
     envId: String,
     collection: String,
@@ -20,15 +24,32 @@ Component({
   },
 
   data: {
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     chats: [],
     textInputValue: '',
     openId: '',
     scrollTop: 0,
+    InputBottom: 0,
     scrollToMessage: '',
     hasKeyboard: false,
+    sendText:'1'
   },
 
   methods: {
+    //键盘上升高度
+    InputFocus(e) {
+      this.setData({
+        InputBottom: e.detail.height
+      })
+      console.log(e.detail.value)
+    },
+    InputBlur(e) {
+      this.setData({
+        InputBottom: 0
+      })
+    },
     onGetUserInfo(e) {
       this.properties.onGetUserInfo(e)
     },
@@ -47,7 +68,7 @@ Component({
     async initRoom() {
       this.try(async () => {
         await this.initOpenID()
-
+        
         const { envId, collection } = this.properties
         const db = this.db = wx.cloud.database({
           env: envId,
@@ -149,7 +170,13 @@ Component({
         }
       }
     },
-
+    onTextBindnput:function(e){
+        var textInputValue=e.detail.value;
+        this.setData({
+          textInputValue:textInputValue
+        })
+      
+    },
     async onConfirmSendText(e) {
       this.try(async () => {
         if (!e.detail.value) {
@@ -266,7 +293,7 @@ Component({
         },
       })
     },
-
+  
     onMessageImageTap(e) {
       wx.previewImage({
         urls: [e.target.dataset.fileid],
