@@ -32,8 +32,8 @@
  			<text class="cuIcon-emojifill text-grey"  bindtap="onChooseImage"></text>
  		</view>
  		<view class="action">
- 			<text class="cuIcon-roundaddfill text-grey"  bindtap="" wx:if="{{textInputValue==''}}"></text>
- 			<button class="cu-btn bg-green shadow text-style" bindtap="" size="mini" wx:if="{{textInputValue!=''}}">发送</button>
+ 			<text class="cuIcon-roundaddfill text-grey"  bindtap="send" wx:if="{{textInputValue==''}}"></text>
+ 			<button class="cu-btn bg-green shadow text-style" bindtap="onConfirmSendText" size="mini" wx:if="{{textInputValue!=''}}">发送</button>
  		</view>
  	</view>
  	<view class="cu-bar foot" wx:if="{{!userInfo}}">

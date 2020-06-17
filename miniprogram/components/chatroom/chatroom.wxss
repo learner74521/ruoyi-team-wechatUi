@@ -5,12 +5,11 @@
   flex-direction: column;
 }
 
-
 .chatroom .body {
   flex: 2;
   display: flex;
   flex-direction: column;
-  background: rgb(237,237,237);
+  background: rgb(237, 237, 237);
   padding-bottom: 90rpx;
 }
 
@@ -23,7 +22,7 @@
 
 .body .message.message__self {
   flex-direction: row-reverse;
-  
+
 }
 
 .body .message .avatar {
@@ -37,7 +36,7 @@
 
 .body .message .main {
   max-width: calc(100% - 260rpx);
-	margin: 0 40rpx;
+  margin: 0 25rpx;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -62,43 +61,48 @@
   font-size: 30rpx;
   display: inline-block;
 }
+
 .body .message.message__self>.main .text-content::after {
-	content: "";
-	top: 60rpx;
-	transform: rotate(45deg);
-	position: absolute;
-	z-index: 1;
-	display: inline-block;
-	overflow: hidden;
-	width: 24rpx;
-	height: 24rpx;
-	left: -12rpx;
-	right: initial;
-	background-color: inherit;
+  content: "";
+  top: 60rpx;
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  width: 24rpx;
+  height: 24rpx;
+  left: -12rpx;
+  right: initial;
+  background-color: inherit;
 }
+
 .body .message.message__self>.main .text-content::after {
-	left: auto;
-  right: 135rpx;
-  
+  left: auto;
+  right: 122rpx;
+
 }
+
 .body .message.message__right>.main .text-content::before {
   content: "";
-	top: 60rpx;
-	transform: rotate(45deg);
-	position: absolute;
-	z-index: 1;
-	display: inline-block;
-	overflow: hidden;
-	width: 24rpx;
-	height: 24rpx;
-	left: -12rpx;
-	right: initial;
-	background-color: inherit;
+  top: 60rpx;
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  width: 24rpx;
+  height: 24rpx;
+  left: -12rpx;
+  right: initial;
+  background-color: inherit;
 }
+
 .body .message.message__right>.main .text-content::before {
-	left: 135rpx;
+  left: 122rpx;
   right: auto;
 }
+
 .body .message.message__self .text-content {
   background-color: paleturquoise;
 }
@@ -110,7 +114,7 @@
   max-width: 80%;
 }
 
-.body .message.message__self .text-wrapper .loading{
+.body .message.message__self .text-wrapper .loading {
   font-size: 16rpx;
   margin-right: 18rpx;
 }

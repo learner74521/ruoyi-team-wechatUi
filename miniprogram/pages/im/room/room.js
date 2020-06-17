@@ -46,7 +46,7 @@ Page({
         if (res.safeArea) {
           const { top, bottom } = res.safeArea
           this.setData({
-            containerStyle: `padding-top: ${(/ios/i.test(res.system) ? 10 : 20) + top}px; padding-bottom: ${20 + res.windowHeight - bottom}px`,
+            containerStyle: `padding-top: ${top-20}px; padding-bottom: ${10 + res.windowHeight - bottom}px`,
           })
         }
       },

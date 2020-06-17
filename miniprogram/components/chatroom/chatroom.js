@@ -4,6 +4,7 @@ const SETDATA_SCROLL_TO_BOTTOM = {
   scrollWithAnimation: true,
 }
 const app=getApp();
+var  SocketTask;
 Component({
   options: {
     addGlobalClass: true,
@@ -36,20 +37,111 @@ Component({
     hasKeyboard: false,
     sendText:'1'
   },
-
+  lifetimes:{
+attached:function(e){
+  var that = this;
+  var openid=app.globalData.openid;
+    console.log("开始连接")
+      SocketTask = wx.connectSocket({
+      url:"ws://localhost:8080/wechatapi/"+ openid,
+      data: JSON.stringify("hello"),
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'post',
+      success: function (res) {
+        console.log('WebSocket连接创建', res)
+        console.log('成功', res)
+      },
+      fail: function (err) {
+        wx.showToast({
+          title: '网络异常！',
+        })
+        console.log(err)
+      },
+    })
+         
+        SocketTask.onOpen(res => {
+          
+          console.log('监听 WebSocket 连接打开事件。', res)
+        })
+        SocketTask.onClose(onClose => {
+          console.log('监听 WebSocket 连接关闭事件。', onClose)
+          
+          this.webSocket()
+        })
+        SocketTask.onError(onError => {
+          console.log('监听 WebSocket 错误。错误信息', onError)
+         
+        })
+        
+        
+        SocketTask.onMessage(onMessage => {
+          console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', JSON.parse(onMessage.data))
+          var onMessage_data = JSON.parse(onMessage.data)
+          console.log(onMessage.data)
+          if (onMessage_data.cmd == 1) {
+            that.setData({
+              link_list: text
+            })
+            console.log(text, text instanceof Array)
+            // 是否为数组
+            if (text instanceof Array) {
+              for (var i = 0; i < text.length; i++) {
+                text[i]
+              }
+            } else {
+     
+            }
+            that.data.allContentList.push({ is_ai: true, text: onMessage_data.body });
+            that.setData({
+              allContentList: that.data.allContentList
+            })
+            that.bottom()
+          }
+        })
+}
+},
   methods: {
     //键盘上升高度
     InputFocus(e) {
       this.setData({
         InputBottom: e.detail.height
       })
-      console.log(e.detail.value)
     },
     InputBlur(e) {
       this.setData({
         InputBottom: 0
       })
     },
+    send:function(e){
+      var msg={
+         uername:'2',
+         to:'All',
+         message:'11111'
+       }
+       var that = this;
+  console.log('通过 WebSocket 连接发送数据', JSON.stringify(msg))
+  SocketTask.send({
+    data: JSON.stringify(msg)
+    
+  },
+   function () {
+    console.log('已发送', res)
+  })
+     },
+    /**
+     * 在组件实例进入页面节点树执行
+     */
+    // attached(e){
+
+    // },
+    webSocket: function () {
+      console.log("开始连接")
+      // 创建Socket
+     
+    },
+
     onGetUserInfo(e) {
       this.properties.onGetUserInfo(e)
     },
@@ -64,7 +156,7 @@ Component({
         ...criteria,
       }
     },
-
+    
     async initRoom() {
       this.try(async () => {
         await this.initOpenID()
@@ -170,6 +262,7 @@ Component({
         }
       }
     },
+    //获取文本
     onTextBindnput:function(e){
         var textInputValue=e.detail.value;
         this.setData({
@@ -177,9 +270,10 @@ Component({
         })
       
     },
-    async onConfirmSendText(e) {
+    async onConfirmSendText() {
+      var textInputValue=this.data.textInputValue;
       this.try(async () => {
-        if (!e.detail.value) {
+        if (!textInputValue) {
           return
         }
 
@@ -193,7 +287,7 @@ Component({
           avatar: this.data.userInfo.avatarUrl,
           nickName: this.data.userInfo.nickName,
           msgType: 'text',
-          textContent: e.detail.value,
+          textContent: textInputValue,
           sendTime: new Date(),
           sendTimeTS: Date.now(), // fallback
         }
@@ -361,3 +455,12 @@ Component({
     this.fatalRebuildCount = 0
   },
 })
+function sendSocketMessage(msg) {
+  var that = this;
+  console.log('通过 WebSocket 连接发送数据', JSON.stringify(msg))
+  SocketTask.send({
+    data: JSON.stringify(msg)
+  }, function (res) {
+    console.log('已发送', res)
+  })
+}

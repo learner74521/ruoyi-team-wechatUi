@@ -52,6 +52,12 @@ Component({
     this.setData({
       ListTouchDirection: null
     })
+  },
+  Navigator:function(e){
+    console.log("navigator")
+    wx.navigateTo({
+      url: '../im/room/room',
+    })
   }
 }
 })

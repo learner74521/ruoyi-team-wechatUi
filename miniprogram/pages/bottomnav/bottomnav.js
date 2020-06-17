@@ -1,8 +1,19 @@
+const app=getApp();
 Page({
   data: {
     PageCur: 'team',
     badge:99,
     badge_my:1
+  },
+  onLoad:function(e){
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+      }
+    })
   },
   NavChange(e) {
     this.setData({
