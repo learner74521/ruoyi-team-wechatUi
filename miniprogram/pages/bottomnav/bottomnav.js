@@ -5,7 +5,7 @@ Page({
     badge:99,
     badge_my:1
   },
-  onLoad:function(e){
+  onLoad:function(e){ 
     wx.cloud.callFunction({
       name: 'login',
       data: {},

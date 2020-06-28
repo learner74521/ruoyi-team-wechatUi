@@ -20,7 +20,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wx392d9f5131b171c7",
 	"projectname": "%E7%BB%84%E9%98%9F%E5%90%A7",

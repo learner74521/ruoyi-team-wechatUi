@@ -2,7 +2,6 @@
   "pages": [
     
     "pages/bottomnav/bottomnav",
-    "pages/im/im",
     "pages/login/login",
     "pages/im/room/room",
     "pages/myhome/home/home",

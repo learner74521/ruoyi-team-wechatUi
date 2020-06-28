@@ -1,7 +1,7 @@
 //index.js
 const app = getApp();
 var url=require("../../util/dataUrl/dataUrl.js");
-var nowDateTime=require("../../util/nowDateTime.js")
+var nowDateTime=require("../../util/dateTime/nowDateTime.js")
 Page({
   data: {
     bgGif: "https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgGifUrl-2020/loading-white.gif?sign=61d02d8fe9bb6698e6d7ddd1ebed7400&t=1586870048",

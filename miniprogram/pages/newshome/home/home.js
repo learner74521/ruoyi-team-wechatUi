@@ -54,9 +54,9 @@ Component({
     })
   },
   Navigator:function(e){
-    console.log("navigator")
+    const roomid=111
     wx.navigateTo({
-      url: '../im/room/room',
+      url: '../im/room/room?roomid='+roomid,
     })
   }
 }

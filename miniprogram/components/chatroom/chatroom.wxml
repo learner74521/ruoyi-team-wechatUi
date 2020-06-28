@@ -5,10 +5,10 @@
  	</cu-custom>
  	<!-- chats -->
  	<scroll-view class="body" scroll-y style="height:calc(100vh - {{CustomBar}}px)" bindscrolltoupper="onScrollToUpper">
- 		<view wx:for="{{chats}}" wx:key="{{item._id}}" id="item-{{index}}" class="message {{openId == item._openid ? 'message__self' : 'message__right'}}">
- 			<image class="avatar" src="{{item.avatar}}" mode="scaleToFill"></image>
+ 		<view wx:for="{{chats.newsList}}" wx:key="{{item.newsId}}" id="item-{{index}}" class="message {{openId == item.newsUserOpenid ? 'message__self' : 'message__right'}}">
+ 			<image class="avatar" src="{{item.wxChatUserInfo.creatorAvatar}}" mode="scaleToFill"></image>
  			<view class="main">
- 				<view class="nickname">{{item.nickName}}</view>
+ 				<view class="nickname">{{item.wxChatUserInfo.creatorName}}</view>
  				<block wx:if="{{item.msgType === 'image'}}">
  					<view class="image-wrapper">
  						<view class="loading" wx:if="{{item.writeStatus > -1}}">{{item.writeStatus}}%</view>
@@ -18,7 +18,7 @@
  				<block wx:else>
  					<view class="text-wrapper">
  						<view class="loading" wx:if="{{item.writeStatus === 'pending'}}">···</view>
- 						<view class="text-content">{{item.textContent}}</view>
+ 						<view class="text-content">{{item.newsContent}}</view>
  					</view>
  				</block>
  			</view>

@@ -35,17 +35,17 @@ Component({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
     list: [{
-      title: '游戏组队',
+      title: '创业Team',
       img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza1.jpg?sign=4d625501a036159b3d75b1a984bdaa49&t=1586679556',
       url: '/indexes/indexes'
   },
     {
-      title: '购物组队',
+      title: '租车Team',
       img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza2.jpg?sign=a4d90bfcda59ce58ecb3971396408bc3&t=1586679190',
       url: '/animation/animation'
     },
     {
-      title: '租车组队',
+      title: '游戏Team',
       img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza3.jpg?sign=52a5e66eab3c10028c1ea6f12b147bc6&t=1586679209',
       url: '/drawer/drawer'
     }

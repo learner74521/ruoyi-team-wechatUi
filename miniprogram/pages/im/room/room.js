@@ -15,9 +15,11 @@ Page({
     // functions for used in chatroom components
     onGetUserInfo: null,
     getOpenID: null,
+    getRoomId: null
   },
 
-  onLoad: function() {
+  onLoad: function (options) {
+    var roomid = options.roomid;
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -38,13 +40,16 @@ Page({
     this.setData({
       onGetUserInfo: this.onGetUserInfo,
       getOpenID: this.getOpenID,
+      getRoomId: roomid
     })
-
     wx.getSystemInfo({
       success: res => {
         console.log('system info', res)
         if (res.safeArea) {
-          const { top, bottom } = res.safeArea
+          const {
+            top,
+            bottom
+          } = res.safeArea
           this.setData({
             containerStyle: `padding-top: ${top-20}px; padding-bottom: ${10 + res.windowHeight - bottom}px`,
           })
@@ -53,19 +58,21 @@ Page({
     })
   },
 
-  getOpenID: async function() {
+  getOpenID: async function () {
     if (this.openid) {
       return this.openid
     }
 
-    const { result } = await wx.cloud.callFunction({
+    const {
+      result
+    } = await wx.cloud.callFunction({
       name: 'login',
     })
 
     return result.openid
   },
 
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,

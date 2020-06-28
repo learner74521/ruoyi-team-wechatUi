@@ -1,5 +1,5 @@
 //app.js
-var nowDateTime=require("./util/nowDateTime.js")
+var nowDateTime=require("./util/dateTime/nowDateTime.js")
 App({
   onLaunch: function () {
     if (!wx.cloud) {
