@@ -47,7 +47,7 @@ Component({
     {
       title: '游戏Team',
       img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza3.jpg?sign=52a5e66eab3c10028c1ea6f12b147bc6&t=1586679209',
-      url: '/drawer/drawer'
+      url: '/gameteam/gameteam'
     }
   ]
 },
@@ -65,11 +65,21 @@ pageLifetimes: {
   resize: function () { console.log("resize")},
 },
 
-  // cardSwiper
-  cardSwiper(e) {
+
+  
+methods:{
+   // cardSwiper
+   cardSwiper(e) {
     this.setData({
       cardCur: e.detail.current
     })
   },
-
+  toChild(e){
+    var profix=e.currentTarget.dataset.url
+    console.log(profix)
+    wx.navigateTo({
+      url: '/pages/plazahome'+profix,
+    })
+  }
+}
 })

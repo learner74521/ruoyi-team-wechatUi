@@ -4,6 +4,8 @@ const SETDATA_SCROLL_TO_BOTTOM = {
   scrollWithAnimation: true,
 }
 const app = getApp();
+const dataUrl=require('../../util/dataUrl/dataUrl');
+const upload = require('../../util/request/upload');
 var SocketTask;
 Component({
   options: {
@@ -19,10 +21,7 @@ Component({
     getRoomId: Number,
     onGetUserInfo: {
       type: Function,
-    },
-    getOpenID: {
-      type: Function,
-    },
+    }
   },
 
   data: {
@@ -30,26 +29,29 @@ Component({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     chats: [],
+    openId: '',
+    hasNews:false,
     textInputValue: '',
-    openId: app.globalData.openid,
     scrollTop: 0,
     InputBottom: 0,
     scrollToMessage: '',
     hasKeyboard: false,
-    sendText: '1'
+    sendText: '1',
+    imgUrlList:[]
   },
+  //组件生命周期
   lifetimes: {
-    attached:function(e){
-        this.setData({
-          openId:app.globalData.openid
-        })
+    attached: function (e) {
+      this.setData({
+        openId: app.globalData.openid,
+        userInfo: app.globalData.userInfo
+      })
     },
     ready: function (e) {
       var that = this;
       that.connectSocket();
       SocketTask.onOpen(res => {
         console.log('监听 WebSocket 连接打开事件。', res)
-
       })
       SocketTask.onError(onError => {
         console.log('监听 WebSocket 错误。错误信息', onError)
@@ -59,13 +61,15 @@ Component({
       SocketTask.onMessage(onMessage => {
         console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', JSON.parse(onMessage.data))
         var onMessage_data = JSON.parse(onMessage.data)
-        
-          that.setData({
-            chats: onMessage_data
-          })
-         
-      
+        that.setData({
+          chats: onMessage_data,
+          hasNews:true
+        })
+        if(that.data.hasNews){
+          that.scrollToBottom(true)
+        }
       })
+      
     },
 
     detached: function () {
@@ -84,37 +88,43 @@ Component({
 
   },
   methods: {
-    //键盘上升高度
+    //获得焦点时键盘上升高度
     InputFocus(e) {
       this.setData({
         InputBottom: e.detail.height
       })
     },
+    //失去焦点键盘收起
     InputBlur(e) {
       this.setData({
         InputBottom: 0
       })
     },
-    send: function (e) {
+    //发送消息
+    send: function (type,write) {
+      if(type=="image"){
+        var newsImage=write;
+        var newsContent='';
+      }else{
+        var newsImage='';
+        var newsContent=write;
+      }
       var msg = {
-        newsUserOpenid:this.data.openId,
-        newsRoomId:111,
-        newsImage:'',
-        newsContent: 'china',
-        wxChatUserInfo:{
-          creatorAvatar:app.globalData.userInfo.avatarUrl,
-          creatorName:app.globalData.userInfo.nickName,
+        newsUserOpenid: this.data.openId,
+        newsRoomId: this.properties.getRoomId,
+        newsImage:newsImage,
+        newsType:type,
+        newsContent:newsContent,
+        wxChatUserInfo: {
+          creatorAvatar: app.globalData.userInfo.avatarUrl,
+          creatorName: app.globalData.userInfo.nickName,
         }
       }
-      var that = this;
       console.log('通过 WebSocket 连接发送数据', JSON.stringify(msg))
       SocketTask.send({
           data: JSON.stringify(msg)
-
-        },
-        function () {
-          console.log('已发送', res)
         })
+        
     },
     /**
      * 断开重新连接
@@ -147,89 +157,57 @@ Component({
         },
       })
     },
+    //获取文本内容
+    onTextBindnput: function (e) {
+      var textInputValue = e.detail.value;
+      this.setData({
+        textInputValue: textInputValue
+      })
+    },
+    //验证用户是否授权
     onGetUserInfo(e) {
       this.properties.onGetUserInfo(e)
     },
-    getOpenID() {
-      return this.properties.getOpenID()
+    //发送文本按钮
+    onConfirmSendText:function(e){
+    var writeText=this.data.textInputValue
+    this.send("text",writeText)
+    this.setData({
+      textInputValue:'',
+    })
     },
-    async onChooseImage(e) {
+    //选择图片并上传
+    onChooseImage:function(){
+      var that=this;
+      var imgList = [];
       wx.chooseImage({
-        count: 1,
+        count: 4,
         sourceType: ['album', 'camera'],
-        success: async res => {
-          const {
-            envId,
-            collection
-          } = this.properties
-          const doc = {
-            _id: `${Math.random()}_${Date.now()}`,
-            groupId: this.data.groupId,
-            avatar: this.data.userInfo.avatarUrl,
-            nickName: this.data.userInfo.nickName,
-            msgType: 'image',
-            sendTime: new Date(),
-            sendTimeTS: Date.now(), // fallback
-          }
-
-          this.setData({
-            chats: [
-              ...this.data.chats,
-              {
-                ...doc,
-                _openid: this.data.openId,
-                tempFilePath: res.tempFilePaths[0],
-                writeStatus: 0,
-              },
-            ]
-          })
-          this.scrollToBottom(true)
-
-          const uploadTask = wx.cloud.uploadFile({
-            cloudPath: `${this.data.openId}/${Math.random()}_${Date.now()}.${res.tempFilePaths[0].match(/\.(\w+)$/)[1]}`,
-            filePath: res.tempFilePaths[0],
-            config: {
-              env: envId,
-            },
-            success: res => {
-              this.try(async () => {
-                await this.db.collection(collection).add({
-                  data: {
-                    ...doc,
-                    imgFileID: res.fileID,
-                  },
-                })
-              }, '发送图片失败')
-            },
-            fail: e => {
-              this.showError('发送图片失败', e)
-            },
-          })
-
-          uploadTask.onProgressUpdate(({
-            progress
-          }) => {
-            this.setData({
-              chats: this.data.chats.map(chat => {
-                if (chat._id === doc._id) {
-                  return {
-                    ...chat,
-                    writeStatus: progress,
-                  }
-                } else return chat
+        success: res => {
+          imgList = res.tempFilePaths
+          imgList.forEach(function (item, index) {
+            const url=dataUrl.uploadUrl
+            upload.asyncUpload(url,item,'file').then(res=>{
+              var uploadData=[]
+              uploadData.push({'index':index,'imageUrl':res.data.url})
+               uploadData.forEach(function (item, index){
+                 setTimeout(function(){
+                 that.send("image",item.imageUrl),100
+                 } );
               })
-            })
           })
-        },
+          })
+        }
       })
     },
+    
 
     onMessageImageTap(e) {
       wx.previewImage({
         urls: [e.target.dataset.fileid],
       })
     },
-
+    //自动滚动到底部
     scrollToBottom(force) {
       if (force) {
         console.log('force scroll to bottom')

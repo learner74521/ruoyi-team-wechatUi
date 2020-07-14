@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/bottomnav/bottomnav",
     "pages/login/login",
     "pages/im/room/room",
@@ -8,7 +7,8 @@
     "pages/findhome/home/home",
     "pages/plazahome/home/home",
     "pages/newshome/home/home",
-    "pages/teamhome/home/home"
+    "pages/teamhome/home/home",
+    "pages/plazahome/gameteam/gameteam"
     
     
   ],

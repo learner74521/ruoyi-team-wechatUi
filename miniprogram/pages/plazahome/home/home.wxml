@@ -8,7 +8,7 @@
 		</view>
 	</view>
 </cu-custom>
-<scroll-view></scroll-view>
+<scroll-view scroll-y class="scrollPage">
 <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
 	<swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}" touch-action="none">
 		<view class="swiper-item">
@@ -18,7 +18,6 @@
 		</view>
 	</swiper-item>
 </swiper>
-<scroll-view scroll-y class="scrollPage">
   <view class="cu-card">
     <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
       <view class="cardTitle">

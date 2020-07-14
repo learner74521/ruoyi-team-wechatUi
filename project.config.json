@@ -90,8 +90,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/im/im",
-					"pathName": "pages/im/im",
+					"name": "游戏模块",
+					"pathName": "pages/plazahome/gameteam/gameteam",
 					"scene": null
 				}
 			]

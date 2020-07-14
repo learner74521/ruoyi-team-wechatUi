@@ -96,7 +96,7 @@ function WXRequest(param) {
 	})
   })
 }
-//最后把方法暴露出去
+//暴露出去的方法
 module.exports = {
 	request_post,request_get,request_json_post,request_json_get
 }

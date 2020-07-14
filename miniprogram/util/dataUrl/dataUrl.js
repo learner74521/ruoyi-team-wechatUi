@@ -1,6 +1,7 @@
 //获得接口地址
+const  prefix ="http://localhost:80";
 module.exports = {
-  loginUrl: "http://localhost:80//wechatapi/wxuser/post", 
-
+  loginUrl: prefix+"/wechatapi/wxuser/post", 
+  uploadUrl: prefix+"/common/upload",
 }
 
