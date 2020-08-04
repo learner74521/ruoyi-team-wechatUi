@@ -2,8 +2,9 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
+
 .scrollPage {
-  height: 100%;
+  height: 100vh;
 }
 
 .nav-list {
@@ -108,4 +109,7 @@
   font-weight: 300;
 }
 
-
+.response {
+  width: 100%;
+  vertical-align:bottom;
+}

@@ -134,9 +134,6 @@ image.loading::after {
 	display: block;
 }
 
-.response {
-	width: 100%;
-}
 
 /* ==================
          开关

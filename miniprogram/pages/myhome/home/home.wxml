@@ -7,7 +7,7 @@
 	</view>
     <image src="{{bgGif}}" mode="scaleToFill" class="gif-wave"></image>
 </view>
-<view class="padding flex  text-grey bg-white shadow-warp">
+<view class="padding flex text-grey bg-white shadow-warp">
  <view class="cu-avatar round lg margin-left"  style="background-image:url({{userInfo.avatarUrl}});"><view class="cu-tag badge {{userInfo.gender%2==0?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view></view>
  <view class="info-box">
    <view class="info-name" wx:if="{{userInfo.nickName!=''}}">{{userInfo.nickName}}</view>

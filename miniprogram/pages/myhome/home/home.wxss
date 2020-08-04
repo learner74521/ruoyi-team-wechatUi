@@ -1,3 +1,7 @@
+.scrollPage{
+  height: 70vh;
+}
+
 .gif-wave {
   position: absolute;
   width: 100%;
