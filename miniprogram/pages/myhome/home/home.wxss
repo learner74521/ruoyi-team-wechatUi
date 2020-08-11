@@ -1,0 +1,49 @@
+.scrollPage{
+  height: 70vh;
+}
+
+.gif-wave {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;
+  height: 100rpx;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10rpx;
+  margin-left: 45rpx;
+}
+
+.info-name {
+  font-size: 12pt;
+  font-weight: 400;
+  
+}
+
+.info-card {
+  margin-top: 10rpx;
+  width: 120rpx;
+  height: 38rpx;
+  padding: 2rpx;
+  font-weight: 200;
+  font-size: 9pt;
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.info-vip {
+  margin-top: 12rpx;
+  width: 100rpx;
+  height: 30rpx;
+  font-weight: 200;
+  font-size: 9pt;
+  text-align: center;
+  border-radius: 15rpx;
+  margin-left: 15rpx;
+}

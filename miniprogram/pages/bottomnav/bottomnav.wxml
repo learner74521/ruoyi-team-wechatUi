@@ -1,0 +1,31 @@
+<plaza wx:if="{{PageCur=='plaza'}}"></plaza>
+<find wx:if="{{PageCur=='find'}}"></find>
+<team wx:if="{{PageCur=='team'}}"></team>
+<news wx:if="{{PageCur=='news'}}"></news>
+<myhome wx:if="{{PageCur=='myhome'}}"></myhome>
+<view class="cu-bar tabbar bg-black foot">
+	<view class="action {{PageCur=='plaza'?'text-blue':'text-gray'}}" bindtap="NavChange" data-cur="plaza">
+		<view class="cuIcon-apps"></view> 广场
+	</view>
+	<view class="action {{PageCur=='find'?'text-blue':'text-gray'}} " bindtap="NavChange" data-cur="find">
+		<view class="cuIcon-attention" ></view> 发现
+	</view>
+	<view class="action {{PageCur=='team'?'text-blue':'text-gray'}} add-action" bindtap="NavChange" data-cur="team">
+		<button class="cu-btn cuIcon-group bg-blue shadow"></button>
+		TEAM
+	</view>
+	<view class="action {{PageCur=='news'?'text-blue':'text-gray'}}" bindtap="NavChange" data-cur="news"> 
+		<view class="cuIcon-mark">
+			<view class="cu-tag badge" wx:if="{{badge!=0}}">
+          <block wx:if="{{badge!=1}}">{{badge>99?"99+":badge}}</block>
+      </view>
+		</view>
+	 消息
+	</view>
+	<view class="action {{PageCur=='myhome'?'text-blue':'text-gray'}}" bindtap="NavChange" data-cur="myhome">
+		<view class="cuIcon-my">
+			<view class="cu-tag badge" wx:if="{{badge_my!=0}}"></view>
+		</view>
+		我的
+	</view>
+</view>

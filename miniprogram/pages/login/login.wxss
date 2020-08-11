@@ -1,0 +1,55 @@
+/**index.wxss**/
+@import "../../style/interest.wxss";
+@import "../../colorui/animation.wxss";
+page {
+  background: white;
+}
+
+.userinfo {
+  height: 140rpx;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+  padding-left: 50rpx;
+  padding-top: 60rpx;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-color: white;
+}
+
+.userinfo-avatar[size] {
+  width: 100rpx;
+}
+
+.userinfo-nickName{
+  padding-left: 15rpx;
+  font-size: 12pt;
+}
+
+.folat-right{
+  float: right;
+  margin-top: 10rpx;
+  margin-right: 30rpx;
+}
+.skip_font{
+  color: grey;
+  font-weight: 300;
+  font-size: 15pt;
+  font-family: "KaiTi";
+  text-decoration:underline;
+}
+.postion-buttom{
+  position: fixed;
+  bottom:0;
+}

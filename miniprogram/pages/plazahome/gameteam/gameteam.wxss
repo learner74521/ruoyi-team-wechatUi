@@ -1,0 +1,4 @@
+/* pages/plazahome/gameteam/gameteam.wxss */
+page{
+  background-color: white;
+}
