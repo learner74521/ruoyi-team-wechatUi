@@ -70,7 +70,7 @@ function WXRequest(param) {
 	  data: param.data,
 	  method: param.method,
 	  header: {
-		'Content-Type': contentType
+		'Content-Type': param.contentType
 	  },
 	  success: function (res) {
 		if(res.data == '服务器异常'){

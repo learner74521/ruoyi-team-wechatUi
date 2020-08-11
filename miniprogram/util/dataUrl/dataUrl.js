@@ -3,5 +3,6 @@ const  prefix ="http://localhost:80";
 module.exports = {
   loginUrl: prefix+"/wechatapi/wxuser/post", 
   uploadUrl: prefix+"/common/upload",
+  contentUrl:prefix+"/wechatapi/content/list",
 }
 

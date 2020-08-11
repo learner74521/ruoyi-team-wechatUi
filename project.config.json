@@ -16,6 +16,7 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
@@ -27,7 +28,7 @@
 	},
 	"appid": "wx392d9f5131b171c7",
 	"projectname": "%E7%BB%84%E9%98%9F%E5%90%A7",
-	"libVersion": "2.8.1",
+	"libVersion": "2.12.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -92,6 +93,20 @@
 					"id": -1,
 					"name": "游戏模块",
 					"pathName": "pages/plazahome/gameteam/gameteam",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/weather/weather",
+					"pathName": "pages/map/weather/weather",
 					"scene": null
 				}
 			]

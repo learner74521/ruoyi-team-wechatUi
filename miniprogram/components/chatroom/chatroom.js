@@ -185,6 +185,7 @@ Component({
         sourceType: ['album', 'camera'],
         success: res => {
           imgList = res.tempFilePaths
+          console.log(imgList)
           imgList.forEach(function (item, index) {
             const url=dataUrl.uploadUrl
             upload.asyncUpload(url,item,'file').then(res=>{

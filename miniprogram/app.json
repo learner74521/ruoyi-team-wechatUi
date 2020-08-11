@@ -8,13 +8,28 @@
     "pages/plazahome/home/home",
     "pages/newshome/home/home",
     "pages/teamhome/home/home",
-    "pages/plazahome/gameteam/gameteam"
-    
-    
+    "pages/plazahome/gameteam/gameteam",
+    "pages/map/map",
+    "pages/map/weather/weather"
+
   ],
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将方便您对小程序的体验!"
+    }
+  },
+
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.6",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
+
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
-    "navigationBarTitleText": "Color UI",
+    "navigationBarTitleText": "Team",
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
   },

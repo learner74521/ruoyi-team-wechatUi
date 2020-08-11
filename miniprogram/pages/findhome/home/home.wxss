@@ -1,11 +1,1 @@
 /* pages/findhome/find/find.wxss */
-
-.height{
-  height: 200vh;
-}
-.opacityfill{
-  opacity: 1;
-}
-.z-index-top{
- z-index: 99;
-}

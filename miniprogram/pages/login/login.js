@@ -228,12 +228,12 @@ Page({
       // var userList=this.data.userList;
       var userList = {
         "wxName": userInfo.nickName,
-        "wxOpenid": this.data.userList.openid,
+        "wxOpenid":1111222,
         "wxAvatar": userInfo.avatarUrl,
         "wxSex": userInfo.gender
       }
       wx.request({
-        url: url.loginUrl,
+        url: 'http://localhost:80/wechatapi/wxuser/add',
         header: {
           'content-type': 'application/json'
         },
