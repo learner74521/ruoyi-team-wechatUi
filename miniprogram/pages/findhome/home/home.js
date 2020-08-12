@@ -16,7 +16,7 @@ Component({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
-    bgTopUrl: "https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/bgFind.jpg?sign=074d3b2cef543697aaf9101c96636c72&t=1594974053",
+    bgTopUrl: "https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/bgFind.jpg?sign=4ea9aea856666ae9d588c616c3630bc0&t=1596614290",
     navSelect: [{
         title: "推荐",
         icon: "camerafill"

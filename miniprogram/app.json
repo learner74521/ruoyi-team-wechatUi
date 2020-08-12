@@ -9,6 +9,9 @@
     "pages/newshome/home/home",
     "pages/teamhome/home/home",
     "pages/plazahome/gameteam/gameteam",
+    "pages/plazahome/pioneerteam/pioneerteam",
+    "pages/plazahome/studyteam/studyteam",
+    "pages/plazahome/interestteam/interestteam",
     "pages/map/map",
     "pages/map/weather/weather"
 

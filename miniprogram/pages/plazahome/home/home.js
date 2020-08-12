@@ -4,7 +4,7 @@ Component({
   },
   data: {
     cardCur: 0,
-    bgTopUrl:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/top1.jpg?sign=ce8d7c787157668b57db8e4e92747b9f&t=1586679222",
+    bgTopUrl:"https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/top1.jpg?sign=1a9da133ae073a1018020e1194e17088&t=1596614203",
     swiperList: [{
       id: 0,
       type: 'image',
@@ -35,20 +35,25 @@ Component({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
     list: [{
-      title: '创业Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza1.jpg?sign=4d625501a036159b3d75b1a984bdaa49&t=1586679556',
-      url: '/indexes/indexes'
-  },
-    {
-      title: '租车Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza2.jpg?sign=a4d90bfcda59ce58ecb3971396408bc3&t=1586679190',
-      url: '/animation/animation'
-    },
-    {
       title: '游戏Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza3.jpg?sign=52a5e66eab3c10028c1ea6f12b147bc6&t=1586679209',
+      img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-game.jpg?sign=ecb2d4edcc3744b917eb53634405b291&t=1596617513',
       url: '/gameteam/gameteam'
-    }
+    },
+      {
+        title: '学习Team',
+        img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-study.jpg?sign=a82b7e09f77ecb76867fbeecc9dba303&t=1596614171',
+        url: '/studyteam/studyteam'
+      },
+      {
+        title: '兴趣Team',
+        img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-interest.jpg?sign=c1dac23d03a5d0a1e7668e6cb4773a52&t=1596618528',
+        url: '/interestteam/interestteam'
+      },
+    {
+      title: '创业Team',
+      img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-pioneer.jpg?sign=b97bf4a62931ddabc7d90a487484616f&t=1596614183',
+      url: '/pioneerteam/pioneerteam'
+  }
   ]
 },
 
