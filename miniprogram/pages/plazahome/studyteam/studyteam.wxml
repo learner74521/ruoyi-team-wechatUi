@@ -1,42 +1,16 @@
 <!--miniprogram/pages/plazahome/studyteam/studyteam.wxml-->
 <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">学习小组</view>
+  <view slot="content">学习</view>
 </cu-custom>
-<!-- 卡片切换导航栏 -->
-<view class='topTabSwiper shadow-warp'>
-  <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>资料</view>
-  <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>组队</view>
-  <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>交流</view>
-  <view class='tab  {{currentData == 3 ? "tabBorer" : ""}}' data-current="3" bindtap='checkCurrent'>专业</view>
-  <view class='tab  {{currentData == 4 ? "tabBorer" : ""}}' data-current="4" bindtap='checkCurrent'>校内图书馆</view>
-</view>
-<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
-  <swiper-item>
-    <view class='swiper_con'>资料列表</view>
-  </swiper-item>
-  <swiper-item>
-    <view class='swiper_con'>组队列表</view>
-  </swiper-item>
-  <swiper-item>
-    <view class='swiper_con'>交流区</view>
-  </swiper-item>
-  <swiper-item>
-    <view class='swiper_con'>
-      <!-- 底部内容列表 -->
-      <scroll-view scroll-y class="scrollPage">
-        <view class='nav-list'>
-          <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key>
-            <view class="nav-icon" style="background-image:url({{item.icon}})"></view>
-            <view class="nav-title">{{item.title}}</view>
-            <view class="nav-name">{{item.name}}</view>
-            <!-- <text class='cuIcon-{{item.icon}}'></text> -->
-          </navigator>
-        </view>
-      </scroll-view>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class='swiper_con'>校内图书馆</view>
-  </swiper-item>
-</swiper>
+<!-- 底部内容列表 -->
+<scroll-view scroll-y class="scrollPage">
+  <view class='nav-list'>
+    <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key>
+      <view class="nav-icon" style="background-image:url({{item.icon}})"></view>
+      <view class="nav-title">{{item.title}}</view>
+      <view class="nav-name">{{item.name}}</view>
+      <!-- <text class='cuIcon-{{item.icon}}'></text> -->
+    </navigator>
+  </view>
+</scroll-view>

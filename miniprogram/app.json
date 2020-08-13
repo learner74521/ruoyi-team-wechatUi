@@ -13,23 +13,20 @@
     "pages/plazahome/studyteam/studyteam",
     "pages/plazahome/interestteam/interestteam",
     "pages/map/map",
-    "pages/map/weather/weather"
-
+    "pages/map/weather/weather",
+    "pages/plazahome/childpages/childpage"
   ],
-
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将方便您对小程序的体验!"
     }
   },
-
   "plugins": {
     "routePlan": {
       "version": "1.0.6",
       "provider": "wx50b5593e81dd937a"
     }
   },
-
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
     "navigationBarTitleText": "Team",
