@@ -1,12 +1,20 @@
 <!--pages/plazahome/gameteam/gameteam.wxml-->
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">娱乐爱好</view></cu-custom>
-<scroll-view scroll-y class="scrollPage">
-  <!-- <image src='../../../images/team.png' mode='widthFix' class='png' style='width:100%;height:486rpx'></image> -->
-  <view class='nav-list'>
-    <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key>
-      <view class="nav-title">{{item.title}}</view>
-      <view class="nav-name">{{item.name}}</view>
-      <text class='cuIcon-{{item.icon}}'></text>
-    </navigator>
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">游戏</view>
+</cu-custom>
+<swiper-item>
+  <view class='swiper_con'>
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{elements}}" wx:key bindtap="toChildPage" data-title="{{item.title}}">
+          <image class="nav-back" src="{{item.bgimg}}"></image>
+          <view class="nav-icon" style="background-image:url({{item.icon}})"></view>
+          <view class="nav-title">{{item.title}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
   </view>
-</scroll-view>
+</swiper-item>

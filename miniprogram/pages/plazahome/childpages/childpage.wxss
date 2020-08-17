@@ -1,0 +1,27 @@
+/* miniprogram/pages/plazahome/childpages/childpage.wxss */
+
+/*tab框切换*/
+.nav_tab {
+  background-color: #fff;
+  width: 100%;
+  padding-bottom: 1rpx;
+  height: 99rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.show {
+  line-height: 100rpx;
+  text-align: center;
+  flex: 1;
+  font-size: 28rpx;
+  opacity: 0.5;
+}
+
+.hidden {
+  line-height: 100rpx;
+  text-align: center;
+  color: #9bb1ef;
+  flex: 1;
+  font-size: 28rpx;
+}

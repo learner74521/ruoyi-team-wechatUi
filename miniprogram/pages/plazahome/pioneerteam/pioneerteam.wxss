@@ -1,0 +1,4 @@
+/* miniprogram/pages/plazahome/pioneerteam/pioneerteam.wxss */
+page{
+  background-color: white;
+}

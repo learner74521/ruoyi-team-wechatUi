@@ -1,0 +1,67 @@
+<!--miniprogram/pages/plazahome/childpages/childpage.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{title}}</view>
+</cu-custom>
+<view class="nav_title">
+  <view class="nav_tab">
+    <view wx:for="{{tablist}}" class="{{selected==index?'hidden':'show'}}" data-index='{{index}}' bindtap="selected">{{item}}
+    </view>
+  </view>
+  <!-- tab框显示内容 -->
+  <view wx:if="{{selected == 0}}">
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{wteams}}" wx:key>
+          <view class="nav-title">{{item.type}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{selected == 1}}">
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{wteams}}" wx:key>
+          <view class="nav-title">{{item.type}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{selected == 2}}">
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{wteams}}" wx:key>
+          <view class="nav-title">{{item.type}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{selected == 3}}">
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{wteams}}" wx:key>
+          <view class="nav-title">{{item.type}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{selected == 4}}">
+    <!-- 内容列表 -->
+    <scroll-view scroll-y class="scrollPage">
+      <view class='nav-list'>
+        <navigator open-type="navigate" hover-class='none' url="/pages/basics/{{item.name}}/{{item.name}}" class="nav-li " wx:for="{{wteams}}" wx:key>
+          <view class="nav-title">{{item.type}}</view>
+          <view class="nav-name">{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+</view>
