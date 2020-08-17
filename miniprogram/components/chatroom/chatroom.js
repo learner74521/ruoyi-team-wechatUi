@@ -6,6 +6,7 @@ const SETDATA_SCROLL_TO_BOTTOM = {
 const app = getApp();
 const dataUrl=require('../../util/dataUrl/dataUrl');
 const upload = require('../../util/request/upload');
+const request  = require('../../util/request/request');
 var SocketTask;
 Component({
   options: {
@@ -137,10 +138,11 @@ Component({
      * 创建一个 WebSocket 连接
      */
     connectSocket: function () {
+      var wxChatUrl=dataUrl.wxChatUrl;
       var openid = app.globalData.openid;
       var roomid = this.properties.getRoomId
       SocketTask = wx.connectSocket({
-        url: "ws://localhost:80/wechatapi/" + openid + "/" + roomid,
+        url: 'ws://www.linkcool.fun:8088/wechatapi/' + openid + "/" + roomid,
         header: {
           'content-type': 'application/json'
         },

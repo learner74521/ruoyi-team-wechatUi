@@ -1,4 +1,4 @@
-// pages/plazahome/interestteam/interestteam.js
+// pages/findhome/comment/comment.js
 Page({
 
   /**

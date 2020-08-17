@@ -1,4 +1,2 @@
-/* miniprogram/pages/plazahome/pioneerteam/pioneerteam.wxss */
-page{
-  background-color: white;
-}
+/* pages/plazahome/pioneerteam/pioneerteam.wxss */
+@import "../../../style/guide.wxss";

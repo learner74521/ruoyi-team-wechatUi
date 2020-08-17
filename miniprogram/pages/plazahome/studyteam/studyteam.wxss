@@ -1,19 +1,2 @@
-/* miniprogram/pages/plazahome/studyteam/studyteam.wxss */
-@import '../home/tab.wxss';
-
-page {
-  background-color: white;
-}
-
-.nav-icon {
-  float: right;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: 75rpx;
-  width: 75rpx;
-  border-radius: 8rpx;
-}
-
-.tab {
-  width: 20%;
-}
+/* pages/plazahome/studyteam/studyteam.wxss */
+@import "../../../style/guide.wxss";

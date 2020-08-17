@@ -1,10 +1,11 @@
+const imageUrl=require("../../../util/imageUrl/imageUrl.js")
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
     cardCur: 0,
-    bgTopUrl:"https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/top1.jpg?sign=1a9da133ae073a1018020e1194e17088&t=1596614203",
+    bgTopUrl:imageUrl.topImageUrl,
     swiperList: [{
       id: 0,
       type: 'image',
@@ -36,24 +37,24 @@ Component({
     }],
     list: [{
       title: '游戏Team',
-      img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-game.jpg?sign=ecb2d4edcc3744b917eb53634405b291&t=1596617513',
+      img: imageUrl.plaza1ImageUrl,
       url: '/gameteam/gameteam'
+  },
+    {
+      title: '学习Team',
+      img: imageUrl.plaza2ImageUrl,
+      url: '/studyteam/studyteam'
     },
-      {
-        title: '学习Team',
-        img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-study.jpg?sign=a82b7e09f77ecb76867fbeecc9dba303&t=1596614171',
-        url: '/studyteam/studyteam'
-      },
-      {
-        title: '兴趣Team',
-        img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-interest.jpg?sign=c1dac23d03a5d0a1e7668e6cb4773a52&t=1596618528',
-        url: '/interestteam/interestteam'
-      },
+    {
+      title: '兴趣Team',
+      img: imageUrl.plaza3ImageUrl,
+      url: '/interestteam/interestteam'
+    },
     {
       title: '创业Team',
-      img: 'https://7778-wxteam-eric-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza-pioneer.jpg?sign=b97bf4a62931ddabc7d90a487484616f&t=1596614183',
+      img: imageUrl.plaza4ImageUrl,
       url: '/pioneerteam/pioneerteam'
-  }
+    }
   ]
 },
 

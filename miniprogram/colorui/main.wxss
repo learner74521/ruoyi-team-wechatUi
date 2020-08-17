@@ -3942,3 +3942,22 @@ scroll-view.cu-steps .cu-item {
 .lines-white {
 	color: var(--white);
 }
+/*字体颜色渐变色*/
+.text-gradualBlue{
+  color:var(--gradualBlue);
+}
+.text-gradualRed{
+  color:var(--gradualRed);
+}
+.text-gradualOrange{
+  color:var(--gradualOrange);
+}
+.text-gradualGreen{
+  color:var(--gradualGreen);
+}
+.text-gradualPurple{
+  color:var(--gradualPurple);
+}
+.text-gradualPink{
+  color:var(--gradualPink);
+}

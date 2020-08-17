@@ -1,4 +1,4 @@
-	<cu-custom bgColor="bg-gradual-green">
+	<cu-custom bgImage="{{bgTopUrl}}">
 		<view slot="content">消息</view>
 	</cu-custom>
 	<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">

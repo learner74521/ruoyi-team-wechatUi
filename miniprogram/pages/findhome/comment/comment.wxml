@@ -1,54 +1,29 @@
-<scroll-view scroll-y class="scrollPage" bindscroll="onScrollChange">
-	<view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;opacity:{{number}}">
-		<view class="content" style="top:{{StatusBar}}px">
-			发现
-		</view>
-	</view>
-	<view class="cu-custom">
-		<view class="cu-bar fixed text-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px">
-			<view class="action border-custom" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
-				<text class="cuIcon-cameraadd" bindtap="SetPage"></text>
-				<text class="cuIcon-discover" bindtap="serviceTap"></text>
-			</view>
-		</view>
-	</view>
-	<image src='{{findTopUrl}}' mode='widthFix' class='response'></image>
-	<scroll-view scroll-x class="bg-white nav text-center shadow-warp">
-		<block wx:for="{{navSelect}}" data-id="{{index}}" wx:key="id">
-			<view class="cu-item  {{index==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="{{index}}">
-				<text class="cuIcon-{{item.icon}}"></text> {{item.title}}
-			</view>
-		</block>
-	</scroll-view>
-	<view class="content-box">
-		<block wx:for="{{contextList}}" wx:key="{{contentId}}" wx:for-item="items">
-			<view class="cu-card dynamic no-card margin-tb-sm" bindtap="navCommentTap">
+<!--pages/findhome/comment/comment.wxml-->
+<view class="content-box">
+			<view class="cu-card dynamic no-card margin-tb-sm">
 				<view class="cu-item shadow">
-					<view class="cu-tag bg-white fr text-df">
-						<text class="cuIcon-more margin-lr text-gray"></text>
-					</view>
 					<view class="cu-list menu-avatar">
 						<view class="cu-item">
-							<view class="cu-avatar round lg" style="background-image:url({{items.wxChatUserInfo.creatorAvatar}});"></view>
+							<view class="cu-avatar round lg" style="background-image:url({{context.creatorAvatar}});"></view>
 							<view class="content flex-sub">
-								<view>{{items.wxChatUserInfo.creatorName}}</view>
+								<view>{{icontext.creatorName}}</view>
 								<view class="text-gray text-sm flex justify-between">
-									{{items.createTime}}
+									{{context.createTime}}
 								</view>
 							</view>
 						</view>
 					</view>
 					<view class="text-content">
-						{{items.contentText}}
+						{{context.contentText}}
 					</view>
-					<!-- <view class="grid flex-sub padding-lr col-1 grid-square}}" wx:if="{{item.contentType}}==1">
+					<!-- <view class="grid flex-sub padding-lr col-1 grid-square}}" wx:if="{{context.contentType}}==1">
 						<view class="bg-img">
 							<video src="{{item.contentVideo}}"></video>
 						</view>
 					</view> -->
-					<view class="grid flex-sub padding-lr {{items.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
-						<view class="bg-img" wx:for="{{items.contentImages}}" wx:key wx:for-item="item">
-							<image src="{{https+item}}" mode="aspectFill"></image>
+					<view class="grid flex-sub padding-lr {{context.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
+						<view class="bg-img" wx:for="{{context.contentImages}}" wx:key wx:for-item="item">
+							<image src="{{item}}" mode="aspectFill"></image>
 						</view>
 					</view>
 					<view class="text-gray text-df text-right padding">
@@ -58,7 +33,7 @@
 						<text wx:if="{{items.wxDiscoverStatistics.statisticsGoodNum==0}}" class="text-sm">赞</text>
 						<text wx:else class="text-sm">{{items.wxDiscoverStatistics.statisticsGoodNum}}</text>
 						<text class="cuIcon-messagefill margin-lr-xs" bindtap='commentTap' data-id="{{key}}"></text>
-						<text wx:if="{{items.wxDiscoverStatistics.statisticsCommentNum==0}}" bindtap="navCommentTap" class="text-sm">评论</text>
+						<text wx:if="{{items.wxDiscoverStatistics.statisticsCommentNum==0}}" class="text-sm">评论</text>
 						<text wx:else class="text-sm">{{items.wxDiscoverStatistics.statisticsCommentNum}}</text>
 					</view>
 					<!-- 评论 -->
@@ -112,7 +87,5 @@
 			</form> -->
 				</view>
 			</view>
-		</block>
 	</view>
 	<view style="height:10vh"></view>
-</scroll-view>

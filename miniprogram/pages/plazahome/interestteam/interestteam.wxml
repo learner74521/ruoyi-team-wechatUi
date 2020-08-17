@@ -1,2 +1,5 @@
-<!--miniprogram/pages/plazahome/interestteam/interestteam.wxml-->
-<text>miniprogram/pages/plazahome/interestteam/interestteam.wxml</text>
+<!--pages/plazahome/interestteam/interestteam.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">兴趣</view>
+</cu-custom>

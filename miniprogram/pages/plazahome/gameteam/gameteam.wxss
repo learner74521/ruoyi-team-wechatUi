@@ -1,10 +1,7 @@
 /* pages/plazahome/gameteam/gameteam.wxss */
-@import '../home/tab.wxss';
-
-page {
+page{
   background-color: white;
 }
-
 .nav-li {
   color: white;
   position: relative;
