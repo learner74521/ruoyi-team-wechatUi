@@ -1,17 +1,27 @@
 //开发接口
-const  devPrefix ="https://www.linkcool.fun";
+const httpsDevPrefix = "https://www.linkcool.fun";
+const wssDevPrefix="wss://www.linkcool.fun/wss/wechatapi/"
 //测试接口
-const  testPrefix ="http://192.168.194.1:8088";
-const prefix=devPrefix
+const testPrefix = "http://localhost:8088";
+const prefix = testPrefix
 module.exports = {
-  wxChatUrl:"ws://www.linkcool.fun/wechatapi/",
-  loginUrl: prefix+"/wechatapi/wxuser/post", 
-  uploadUrl: prefix+"/common/upload",
-  contentUrl:[prefix+"/wechatapi/content/list",
-              prefix+"/wechatapi/content/list",
-              prefix+"/wechatapi/content/list",
-              prefix+"/wechatapi/content/list"
-               ]
+  wxChatUrl: wssDevPrefix,
+  loginUrl: prefix + "/wechatapi/wxuser/post",
+  uploadUrl: prefix + "/common/upload",
+  contentAddUrl: prefix + "/wechatapi/content/add",
+  contentUrl: [
+    prefix + "/wechatapi/content/list",
+    prefix + "/wechatapi/content/list",
+    prefix + "/wechatapi/content/list",
+    prefix + "/wechatapi/content/list"
+  ],
+  contentDeleteUrl: prefix + "/wechatapi/content/delete",
+  statisticsAddLookUrl: prefix + "/wechatapi/statistics/addLook",
+  commentUrl: prefix + "/wechatapi/comment/listById",
+  commentAddUrl: prefix + "/wechatapi/comment/add",
+  commentDeleteUrl: prefix + "/wechatapi/comment/delete",
+  replyAddUrl: prefix + "/wechatapi/reply/add",
+  replyDeleteUrl: prefix + "/wechatapi/reply/delete"
+
   
 }
-

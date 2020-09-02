@@ -7,11 +7,15 @@
   height: 100vh;
 }
 
+.response {
+  width: 100%;
+  vertical-align:bottom;
+}
+
 .nav-list {
-  margin-top: 50rpx;
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 40rpx 0px;
+  padding: 20px 40rpx 20px;
   justify-content: space-between;
 }
 
@@ -20,7 +24,7 @@
   border-radius: 12rpx;
   width: 45%;
   margin: 0 2.5% 40rpx;
-  /* background-image: url(https://image.weilanwl.com/color2.0/cardBg.png); */
+  background-image: url(https://image.weilanwl.com/color2.0/cardBg.png);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -108,8 +112,6 @@
 .text-light {
   font-weight: 300;
 }
-
-.response {
-  width: 100%;
-  vertical-align:bottom;
+.solid-bottom{
+	border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
 }

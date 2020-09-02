@@ -23,10 +23,10 @@ Component({
       badge: 1,
       name: 'vip'
     }, {
-      icon: 'picfill',
+      icon: 'time',
       color: 'red',
       badge: 0,
-      name: '上传'
+      name: '签到'
     }, {
       icon: 'addressbook',
       color: 'yellow',

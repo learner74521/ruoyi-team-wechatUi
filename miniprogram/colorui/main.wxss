@@ -134,6 +134,9 @@ image.loading::after {
 	display: block;
 }
 
+.response {
+	width: 100%;
+}
 
 /* ==================
          开关
@@ -1231,7 +1234,6 @@ button.icon.lg {
 }
 
 .cu-list+.cu-list {
-	
 	margin-top: 30rpx
 }
 
@@ -1276,6 +1278,7 @@ button.icon.lg {
 .cu-list.menu-avatar>.cu-item.cu-item-sm{
 	height: 160rpx;
 }
+
 .cu-list.menu-avatar>.cu-item>.cu-avatar {
 	position: absolute;
 	left: 30rpx
@@ -1314,9 +1317,7 @@ button.icon.lg {
 	width: 100rpx;
 	text-align: center
 }
-.cu-list.menu-avatar>.cu-item .action.action-sm {
-	width: 120rpx;
-}
+
 .cu-list.menu-avatar>.cu-item .action view+view {
 	margin-top: 10rpx
 }
@@ -2493,7 +2494,6 @@ button.icon.lg {
 	margin-right: auto;
 	width: 680rpx;
 	max-width: 100%;
-	height: 500rpx;
 	background-color: #f8f8f8;
 	border-radius: 10rpx;
 	overflow: hidden;
@@ -3941,23 +3941,4 @@ scroll-view.cu-steps .cu-item {
 .line-white,
 .lines-white {
 	color: var(--white);
-}
-/*字体颜色渐变色*/
-.text-gradualBlue{
-  color:var(--gradualBlue);
-}
-.text-gradualRed{
-  color:var(--gradualRed);
-}
-.text-gradualOrange{
-  color:var(--gradualOrange);
-}
-.text-gradualGreen{
-  color:var(--gradualGreen);
-}
-.text-gradualPurple{
-  color:var(--gradualPurple);
-}
-.text-gradualPink{
-  color:var(--gradualPink);
 }

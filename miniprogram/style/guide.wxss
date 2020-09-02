@@ -1,16 +1,12 @@
 page{
   background-color: white;
 }
-.nav-li {
+/* .nav-li {
   color: white;
   position: relative;
   overflow: hidden;
   text-shadow: 2px 2px 2px #000;
-}
-
-.tab {
-  width: 20%;
-}
+} */
 
 .nav-icon {
   float: right;
