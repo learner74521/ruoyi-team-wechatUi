@@ -1,10 +1,11 @@
+const imageUrl=require("../../../util/imageUrl/imageUrl.js")
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
     cardCur: 0,
-    bgTopUrl:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/top1.jpg?sign=ce8d7c787157668b57db8e4e92747b9f&t=1586679222",
+    bgTopUrl:imageUrl.topImageUrl,
     swiperList: [{
       id: 0,
       type: 'image',
@@ -35,19 +36,24 @@ Component({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
     list: [{
-      title: '创业Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza1.jpg?sign=4d625501a036159b3d75b1a984bdaa49&t=1586679556',
-      url: '/indexes/indexes'
+      title: '游戏Team',
+      img: imageUrl.plaza1ImageUrl,
+      url: '/gameteam/gameteam'
   },
     {
-      title: '租车Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza2.jpg?sign=a4d90bfcda59ce58ecb3971396408bc3&t=1586679190',
-      url: '/animation/animation'
+      title: '学习Team',
+      img: imageUrl.plaza2ImageUrl,
+      url: '/studyteam/studyteam'
     },
     {
-      title: '游戏Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza3.jpg?sign=52a5e66eab3c10028c1ea6f12b147bc6&t=1586679209',
-      url: '/gameteam/gameteam'
+      title: '兴趣Team',
+      img: imageUrl.plaza3ImageUrl,
+      url: '/interestteam/interestteam'
+    },
+    {
+      title: '创业Team',
+      img: imageUrl.plaza4ImageUrl,
+      url: '/pioneerteam/pioneerteam'
     }
   ]
 },

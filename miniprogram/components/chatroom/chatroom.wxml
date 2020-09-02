@@ -4,14 +4,14 @@
 		<view slot="content">聊天室</view>
 	</cu-custom>
 	<!-- chats -->
-	<scroll-view class="body" scroll-y style="height:calc(100vh - {{CustomBar}}px)" scroll-top="{{scrollTop}}"  scroll-with-animation="{{scrollWithAnimation}}" bindscrolltoupper="onScrollToUpper" scroll-into-view="{{scrollToMessage}}">
-		<view wx:for="{{chats.newsList}}" wx:key="{{item.newsId}}" id="item-{{index}}" class="message {{openId == item.newsUserOpenid ? 'message__self' : 'message__right'}}">
+	<scroll-view class="body" scroll-y style="height:calc(100vh - {{CustomBar}}px)" scroll-top="{{scrollTop}}" scroll-with-animation="{{scrollWithAnimation}}" bindscrolltoupper="onScrollToUpper" scroll-into-view="{{scrollToMessage}}">
+		<view wx:for="{{chats.newsList}}" wx:key="{{item.newsId}}" id="item-{{index}}" class="message padding-top {{openId == item.newsUserOpenid ? 'message__self' : 'message__right'}} ">
 			<image class="avatar" src="{{item.wxChatUserInfo.creatorAvatar}}" mode="scaleToFill"></image>
 			<view class="main">
 				<view class="nickname">{{item.wxChatUserInfo.creatorName}}</view>
 				<block wx:if="{{item.newsType === 'image'}}">
 					<view class="image-wrapper">
-						<image src="{{item.newsImage}}" data-fileid="{{item.newsImage}}" class="image-content"  mode="scallToFill" bindtap="onMessageImageTap"></image>
+						<image src="{{item.newsImage}}" data-fileid="{{item.newsImage}}" class="image-content" mode="scallToFill" bindtap="onMessageImageTap"></image>
 					</view>
 				</block>
 				<block wx:else>

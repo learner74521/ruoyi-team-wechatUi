@@ -107,6 +107,13 @@
 					"id": -1,
 					"name": "pages/map/weather/weather",
 					"pathName": "pages/map/weather/weather",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/findhome/sendShare/sendShare",
+					"pathName": "pages/findhome/sendShare/sendShare",
 					"scene": null
 				}
 			]

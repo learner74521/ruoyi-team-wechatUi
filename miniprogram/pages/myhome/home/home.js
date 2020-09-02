@@ -1,5 +1,6 @@
 // pages/myhome/home/home.js
 const app = getApp();
+const imageUrl=require("../../../util/imageUrl/imageUrl.js")
 Component({
   options: {
     addGlobalClass: true,
@@ -12,20 +13,20 @@ Component({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     mycard:["身份认证","学生认证","真实认证"],
-    bgImage:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/home1.jpg?sign=2e1dc24ddcb2713bf2c15de58425979f&t=1586869313",
-    bgGif:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgGifUrl-2020/wave.gif?sign=75e9f4470ba31910da925cba207ad5f1&t=1586869837",
+    bgImage:imageUrl.home1ImageUrl,
+    bgGif:imageUrl.wareGifUrl,
     infoCard:false,
     infoVip:true,
     iconList: [{
-      icon: 'picfill',
-      color: 'red',
-      badge: 0,
-      name: '上传'
-    }, {
       icon: 'vip',
       color: 'orange',
       badge: 1,
       name: 'vip'
+    }, {
+      icon: 'time',
+      color: 'red',
+      badge: 0,
+      name: '签到'
     }, {
       icon: 'addressbook',
       color: 'yellow',
@@ -68,6 +69,8 @@ methods:{
       this.setData({
         userInfo:userInfo
       })  
+     
+     
       console.log(userInfo)
     },
     moved: function () {console.log("moved") },
