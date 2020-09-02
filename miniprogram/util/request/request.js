@@ -57,7 +57,8 @@ function packagingParam(url, data, method, contentType) {
  * 还有的加入了Cookie，加入到header中即可
  */
 function WXRequest(param) {
-
+  //用于请求的计时
+  console.time('请求用时：');
   //遮罩提示，这个可以写成公用的调用，这里就简单说明
   wx.showLoading({
     title: '加载中...',
@@ -72,7 +73,7 @@ function WXRequest(param) {
 		'Content-Type': param.contentType
 	  },
 	  success: function (res) {
-		if(res.code == 1){
+		if(res.data == '服务器异常'){
 		  wx.showModal({
 			title: '提示',
 			content: '网络错误或服务器繁忙!',
@@ -90,6 +91,7 @@ function WXRequest(param) {
 	  },
 	  complete:function(com){
 		wx.hideLoading();
+		console.timeEnd('请求用时：' + param.url); 
 	  }
 	})
   })

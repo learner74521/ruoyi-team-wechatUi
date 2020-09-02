@@ -1,22 +1,20 @@
 <!-- 组队吧海报 -->
 <image src='../../images/team.png' mode='widthFix' class='response'></image>
-<button class="folat-right skip_font" size="mini" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">跳过</button>
+<button  class="folat-right skip_font" size="mini" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">跳过</button>
 <!-- <buttom class="folat-right skip_font" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"></buttom> -->
 <view class="container">
 	<view class="userinfo">
 		<open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
 		<open-data class="userinfo-nickName" type="userNickName"></open-data>
-
+		
 	</view>
 	<view class="interest-container">
-		<view class="margin-sm">
+		<view class="padding-sm">
 			<view class="interest-game">热门游戏</view>
-			<view class=" grid col-2  padding-sm">
-			 <view wx:for="{{interestList}}" wx:key="{{index}}"  class="padding-xs" >
-				<button size="mini" class="cu-btn  margin-sm bg-{{item.color}} animation-{{toggleDelay?'slide-right':''}} {{item.isOk?'interest-game-border':''}} shadow " style="animation-delay: {{(index+1)*0.2}}s;"  bindtap="gameTap" data-id="{{index}}" data-target="bottomModal">
+			<view class="flex flex-wrap justify-around">
+				<button class="cu-btn bg-{{item.color}} animation-{{toggleDelay?'slide-right':''}} {{item.isOk?'interest-game-border':''}} margin-sm basis-sm shadow" bindtap="gameTap" wx:for="{{interestList}}" wx:key="{{index}}" style="animation-delay: {{(index+1)*0.2}}s;" data-id="{{index}}" data-target="bottomModal">
 					<image class="interest-image" src="{{item.img}}" mode="aspectFill"></image>
 				</button>
-				</view>
 			</view>
 		</view>
 		<!-- git动画效果 -->
@@ -27,17 +25,16 @@
 </view>
 <!-- 底部弹出模式选块 -->
 <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
-	<view class="cu-dialog">
-		<view class="cu-bar bg-white">
-			<view class="action {{chooseIndex==2?'text-grey':'text-green'}} text-light" bindtap="nextModalTap">继续选择</view>
-			<button class="action text-blue bg-white text-light" size="mini" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">进入主页<view class="cuIcon-right"></view></button>
-		</view>
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action {{chooseIndex==2?'text-grey':'text-green'}} insterest-font" bindtap="nextModalTap">继续选择</view>
+     <button class="action text-blue bg-white insterest-font" size="mini" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">进入主页<view class="cuIcon-right"></view></button>
+    </view>
 		<view class="interest-love">选择一款最喜欢的模式</view>
-		<view class="grid col-2 padding-sm">
-			<view wx:for="{{interestModelList[0].modelName}}" class="padding-xs" wx:key="{{index}}">
-				<button size="mini" class="cu-btn orange lg block {{index==modelIndex?'bg-orange':'line-orange'}}" bindtap="gameModelTap" data-id="{{index}}"> {{item}}
-				</button>
-			</view>
-		</view>
-	</view>
+    <view class="flex flex-wrap justify-around">
+    <button class="cu-btn margin-sm basis-sm shadow {{index==modelIndex?'bg-blue':'bg-white'}}  " bindtap="gameModelTap" wx:for="{{interestModelList[0].modelName}}" wx:key="{{index}}"  data-id="{{index}}">
+				{{item}}
+		</button>
+    </view>
+  </view>
 </view>

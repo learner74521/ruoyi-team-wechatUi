@@ -6,7 +6,6 @@ const SETDATA_SCROLL_TO_BOTTOM = {
 const app = getApp();
 const dataUrl=require('../../util/dataUrl/dataUrl');
 const upload = require('../../util/request/upload');
-const request  = require('../../util/request/request');
 var SocketTask;
 Component({
   options: {
@@ -138,11 +137,10 @@ Component({
      * 创建一个 WebSocket 连接
      */
     connectSocket: function () {
-      var wxChatUrl=dataUrl.wxChatUrl;
       var openid = app.globalData.openid;
       var roomid = this.properties.getRoomId
       SocketTask = wx.connectSocket({
-        url: wxChatUrl + openid + "/" + roomid,
+        url: "ws://localhost:80/wechatapi/" + openid + "/" + roomid,
         header: {
           'content-type': 'application/json'
         },
@@ -188,10 +186,10 @@ Component({
         success: res => {
           imgList = res.tempFilePaths
           console.log(imgList)
-          var uploadData=[]
           imgList.forEach(function (item, index) {
             const url=dataUrl.uploadUrl
             upload.asyncUpload(url,item,'file').then(res=>{
+              var uploadData=[]
               uploadData.push({'index':index,'imageUrl':res.data.url})
                uploadData.forEach(function (item, index){
                  setTimeout(function(){

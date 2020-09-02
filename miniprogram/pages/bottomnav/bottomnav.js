@@ -1,13 +1,11 @@
-const app = getApp();
-const imageUrl = require("../../util/imageUrl/imageUrl.js")
+const app=getApp();
 Page({
   data: {
-    footMusicUrl: imageUrl.footMusicUrl,
     PageCur: 'team',
-    badge: 99,
-    badge_my: 1
+    badge:99,
+    badge_my:1
   },
-  onLoad: function (e) {
+  onLoad:function(e){ 
     wx.cloud.callFunction({
       name: 'login',
       data: {},
@@ -18,15 +16,6 @@ Page({
     })
   },
   NavChange(e) {
-    const innerAudioContext = wx.createInnerAudioContext()
-    innerAudioContext.autoplay = app.globalData.isMusic
-    innerAudioContext.src = this.data.footMusicUrl
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放')
-    })
-    innerAudioContext.onError((res) => {
-      console.log(res.errMsg)
-    })
     this.setData({
       PageCur: e.currentTarget.dataset.cur
     })
@@ -38,7 +27,7 @@ Page({
       path: '/pages/bottomnav/bottomnav'
     }
   },
-  onUnload: function () {
+  onUnload:function(){
     console.log("bottomnav ---onUnload---")
   }
 })

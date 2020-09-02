@@ -1,4 +1,4 @@
-	<cu-custom bgImage="{{bgTopUrl}}">
+	<cu-custom bgColor="bg-gradual-green">
 		<view slot="content">消息</view>
 	</cu-custom>
 	<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
@@ -8,7 +8,7 @@
 			</view>
 		</view>
 		<view class="cu-list menu-avatar">
-			<view class="cu-item cu-item-sm {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" bindtap="Navigator">
+			<view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" bindtap="Navigator">
 				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
 				<view class="content">
 					<view class="text-grey">组队吧</view>

@@ -1,82 +1,71 @@
 // pages/plazahome/gameteam/gameteam.js
-const imagesUrl=require("../../../util/imageUrl/imageUrl.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    elements: [{
-      title: '王者荣耀',
-      name: 'Arena Of Valor',
-      color: 'cyan',
-      icon: imagesUrl.game1Iconurl,
-      bgimg:imagesUrl.game1Imageurl
-    },
-    {
-      title: '和平精英',
-      name: 'Game For Peace',
-      color: 'blue',
-      icon: imagesUrl.game2Iconurl,
-      bgimg:imagesUrl.game2Imageurl
-    },
-    {
-      title: '英雄联盟',
-      name: 'LOL',
-      color: 'purple',
-      icon: imagesUrl.game3Iconurl,
-      bgimg:imagesUrl.game3Imageurl
-    },
-    {
-      title: '求生之路2',
-      name: 'Left 4 Dead 2',
-      color: 'mauve',
-      icon: imagesUrl.game4Iconurl,
-      bgimg:imagesUrl.game4Imageurl
-    },
-    {
-      title: 'QQ飞车',
-      name: 'QQ Speed',
-      color: 'pink',
-      icon: imagesUrl.game5Iconurl,
-      bgimg:imagesUrl.game5Imageurl
-    },
-    {
-      title: '穿越火线',
-      name: 'CF',
-      color: 'brown',
-      icon: imagesUrl.game6Iconurl,
-      bgimg:imagesUrl.game6Imageurl
-    },
-    {
-      title: '地下城与勇士',
-      name: 'DNF',
-      color: 'red',
-      icon: imagesUrl.game7Iconurl,
-      bgimg:imagesUrl.game7Imageurl
-    },
-    {
-      title: '极品飞车Online',
-      name: 'Need for speed Online',
-      color: 'orange',
-      icon: imagesUrl.game8Iconurl,
-      bgimg:imagesUrl.game8Imageurl
-    },
-    {
-      title: '绝地求生',
-      name: 'PUBG',
-      color: 'olive',
-      icon: imagesUrl.game9Iconurl,
-      bgimg:imagesUrl.game9Imageurl
-    },
-    {
-      title: '守望先锋',
-      name: 'Overwatch',
-      color: 'green',
-      icon: imagesUrl.game10Iconurl,
-      bgimg:imagesUrl.game10Imageurl
-    },
-  ]
+      elements: [{
+          title: '王者荣耀',
+          name: 'layout',
+          color: 'cyan',
+          icon: 'newsfill'
+        },
+        {
+          title: '和平精英',
+          name: 'background',
+          color: 'blue',
+          icon: 'colorlens'
+        },
+        {
+          title: '英雄联盟',
+          name: 'text',
+          color: 'purple',
+          icon: 'font'
+        },
+        {
+          title: '刺激战场',
+          name: 'icon',
+          color: 'mauve',
+          icon: 'icon'
+        },
+        {
+          title: 'QQ飞车',
+          name: 'button',
+          color: 'pink',
+          icon: 'btn'
+        },
+        {
+          title: '穿越火线',
+          name: 'tag',
+          color: 'brown',
+          icon: 'tagfill'
+        },
+        {
+          title: '地下城勇士',
+          name: 'avatar',
+          color: 'red',
+          icon: 'myfill'
+        },
+        {
+          title: '云顶之奕',
+          name: 'progress',
+          color: 'orange',
+          icon: 'icloading'
+        },
+        {
+          title: '服装搭配',
+          name: 'shadow',
+          color: 'olive',
+          icon: 'copy'
+        },
+        {
+          title: '轮滑社',
+          name: 'loading',
+          color: 'green',
+          icon: 'loading2'
+        },
+      ]
     
   },
 

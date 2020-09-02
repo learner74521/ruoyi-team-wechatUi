@@ -1,5 +1,4 @@
 // pages/newshome/news/news.js
-const imageUrl=require("../../../util/imageUrl/imageUrl.js")
 Component({
   options: {
     addGlobalClass: true,
@@ -8,7 +7,6 @@ Component({
    * 页面的初始数据
    */
   data: {
-    bgTopUrl:imageUrl.topImageUrl,
     badge:1
   },
 

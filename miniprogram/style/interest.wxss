@@ -1,1 +1,22 @@
-
+.interest-game{
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  font-family:"KaiTi";
+  font-size:12pt;
+}
+.interest-image{
+  height: 50rpx;
+  width: 220rpx;
+}
+.interest-game-border{
+  border: 2px solid black;
+}
+.interest-love{
+  font-family: 'KaiTi';
+  color: grey;
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+}
+.insterest-font{
+  font-weight: 400;
+}
