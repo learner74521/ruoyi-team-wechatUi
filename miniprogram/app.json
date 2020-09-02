@@ -1,17 +1,31 @@
 {
   "pages": [
+    
     "pages/bottomnav/bottomnav",
     "pages/login/login",
     "pages/im/room/room",
     "pages/myhome/home/home",
-    "pages/findhome/home/home",
-    "pages/plazahome/home/home",
     "pages/newshome/home/home",
     "pages/teamhome/home/home",
+    "pages/findhome/home/home",
+    "pages/findhome/comment/comment",
+    "pages/findhome/sendShare/sendShare",
+    "pages/findhome/sendRecruit/sendRecruit",
+    "pages/plazahome/home/home",
     "pages/plazahome/gameteam/gameteam",
+    "pages/plazahome/pioneerteam/pioneerteam",
+    "pages/plazahome/studyteam/studyteam",
+    "pages/plazahome/interestteam/interestteam",
     "pages/map/map",
-    "pages/map/weather/weather"
-
+    "pages/map/weather/weather",
+    "pages/myhome/vip/vip",
+    "pages/myhome/idCard/idCard",
+    "pages/myhome/sign/sign",
+    "pages/myhome/help/help",
+    "pages/myhome/sysNews/sysNews",
+    "pages/myhome/bugBack/bugBack",
+    "pages/myhome/about/about",
+    "pages/myhome/join/join"
   ],
 
   "permission": {

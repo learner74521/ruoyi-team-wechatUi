@@ -2,9 +2,10 @@
 const app = getApp();
 var url=require("../../util/dataUrl/dataUrl.js");
 var nowDateTime=require("../../util/dateTime/nowDateTime.js")
+const imageUrl=require("../../util/imageUrl/imageUrl.js")
 Page({
   data: {
-    bgGif: "https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgGifUrl-2020/loading-white.gif?sign=61d02d8fe9bb6698e6d7ddd1ebed7400&t=1586870048",
+    bgGif: imageUrl.loadingGifUrl,
     logged: false,
     toggleDelay: false, //关闭的动画效果
     chooseIndex: 0, //选择个数d

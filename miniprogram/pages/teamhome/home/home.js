@@ -1,5 +1,6 @@
 // pages/teamhome/team/team.js
 const app = getApp();
+const imageUrl=require("../../../util/imageUrl/imageUrl.js")
 Component({
   options: {
     addGlobalClass: true,
@@ -14,7 +15,7 @@ Component({
     TabColor: "orange",
     TabCur: 0,
     TabName: "推荐",
-    bgVideo: "https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgVideoUrl-2020/teamVideo.mp4?sign=63b66a10dc080924bde224f0070d768e&t=1588162535",
+    bgVideo: imageUrl.teamVideoUrl,
     topNavList: [{
         name: "推荐",
         color: "orange"
