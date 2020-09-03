@@ -1,0 +1,35 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发表论坛</view>
+</cu-custom>
+<form bindsubmit='sendtap'>
+  <view class="wx_button_nd">
+    <button class="wx_button text-blue round bg-white" size='mini' form-type="submit">
+      <text class="cuIcon-upload"></text>发表</button>
+  </view>
+  <view class="textarea-wrp">
+    <image class="wx_img1" src="../../img/wx_remind_img2.png" mode="scaleToFill"></image>
+    <textarea class="wx_textarea" name="udiscuss" value="{{text}}" style="height: 6em " maxlength="100" bindblur='bindTextAreaBlur' placeholder="请输入发表内容，不能超过100字" />
+  </view>
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      图片上传
+    </view>
+    <view class="action">
+      {{imgList.length}}/4
+    </view>
+  </view> 
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+</form>

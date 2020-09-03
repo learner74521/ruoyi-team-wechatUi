@@ -72,7 +72,7 @@ function WXRequest(param) {
 		'Content-Type': param.contentType
 	  },
 	  success: function (res) {
-		if(res.data == '服务器异常'){
+		if(res.code == 1){
 		  wx.showModal({
 			title: '提示',
 			content: '网络错误或服务器繁忙!',

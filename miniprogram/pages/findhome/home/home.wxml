@@ -7,24 +7,25 @@
 	<view class="cu-custom">
 		<view class="cu-bar fixed text-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px">
 			<view class="action border-custom" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
-				<text class="cuIcon-cameraadd" bindtap="SetPage"></text>
-				<text class="cuIcon-discover" bindtap="serviceTap"></text>
+				<text class="cuIcon-cameraadd" bindtap="navSendShareTap"></text>
+				<text class="cuIcon-discover" bindtap="navSendRecruitTap"></text>
 			</view>
 		</view>
 	</view>
 	<image src='{{findTopUrl}}' mode='widthFix' class='response'></image>
 	<scroll-view scroll-x class="bg-white nav text-center shadow-warp">
-		<block wx:for="{{navSelect}}" data-id="{{index}}" wx:key="id">
+		<block wx:for="{{navSelect}}" data-id="{{index}}" wx:key>
 			<view class="cu-item  {{index==TabCur?'text-blue cur':''}}" bindtap="tabSelect" data-id="{{index}}">
 				<text class="cuIcon-{{item.icon}}"></text> {{item.title}}
 			</view>
 		</block>
 	</scroll-view>
-	<view class="content-box">
-		<block wx:for="{{contextList}}" wx:key="{{contentId}}" wx:for-item="items">
-			<view class="cu-card dynamic no-card margin-tb-sm" bindtap="navCommentTap">
+
+	<view class="content-box" hidden="{{TabCur==3}}">
+		<block wx:for="{{contentList}}" wx:key="{{contentId}}" wx:for-item="items">
+			<view class="cu-card dynamic no-card margin-tb-sm" bindtap="navCommentTap" data-id="{{index}}">
 				<view class="cu-item shadow">
-					<view class="cu-tag bg-white fr text-df">
+					<view class="cu-tag bg-white fr text-df" catchtap="showModelTap" data-target="Modal" data-id="{{index}}" data-openid="{{items.contentUserOpenid}}">
 						<text class="cuIcon-more margin-lr text-gray"></text>
 					</view>
 					<view class="cu-list menu-avatar">
@@ -41,78 +42,80 @@
 					<view class="text-content">
 						{{items.contentText}}
 					</view>
-					<!-- <view class="grid flex-sub padding-lr col-1 grid-square}}" wx:if="{{item.contentType}}==1">
-						<view class="bg-img">
-							<video src="{{item.contentVideo}}"></video>
-						</view>
-					</view> -->
-					<view class="grid flex-sub padding-lr {{items.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
-						<view class="bg-img" wx:for="{{items.contentImages}}" wx:key wx:for-item="item">
-							<image src="{{https+item}}" mode="aspectFill"></image>
-						</view>
-					</view>
-					<view class="text-gray text-df text-right padding">
-						<text class="cuIcon-attentionfill margin-lr-xs"></text>
-						<text class="text-sm">{{items.wxDiscoverStatistics.statisticsLookNum}}</text>
-						<text class="cuIcon-appreciatefill margin-lr-xs {{items.status?'text-red':''}}" bindtap='goodTap' data-id="{{key}}" ></text>
-						<text wx:if="{{items.wxDiscoverStatistics.statisticsGoodNum==0}}" class="text-sm">赞</text>
-						<text wx:else class="text-sm">{{items.wxDiscoverStatistics.statisticsGoodNum}}</text>
-						<text class="cuIcon-messagefill margin-lr-xs" bindtap='commentTap' data-id="{{key}}"></text>
-						<text wx:if="{{items.wxDiscoverStatistics.statisticsCommentNum==0}}" bindtap="navCommentTap" class="text-sm">评论</text>
-						<text wx:else class="text-sm">{{items.wxDiscoverStatistics.statisticsCommentNum}}</text>
-					</view>
-					<!-- 评论 -->
-					<!-- <view class="cu-list menu-avatar comment solids-top" hidden="{{hiddenName}}">
-						<block wx:for="{{pinglunlist}}" wx:key="cid" wx:for-index="keys">
-							<view class="cu-item" wx:if="{{pinglunlist[keys].pid==contentlist[key].pid}}">
-								<view class="cu-avatar round" style="background-image:url({{item.uphoto}});"></view>
-								<view class="content">
-									<view class="text-grey">{{item.wechatname}}</view>
-									<view class="text-gray text-content text-df">
-										{{item.discuss}}
-									</view> -->
-					<!-- <view class="padding-lr bg-gray radius">
-                <view class="padding-sm margin-top-sm  text-sm">
-                  <view class="flex">
-                    <view>莫甘娜：</view>
-                    <view class="flex-sub">如果不能立足于大地，要这双脚又有何用?</view>
-                  </view>
-                </view>
-                <view class="margin-top-sm flex justify-between">
-                  <view class="text-gray text-df">11111</view>
-                  <view>
-                    <text class="cuIcon-deletefill margin-lr-xs  text-grey " wx:if="{{item.uid==myopenid}}" bindtap='deleteReturnTap' id="{{keys}}">删除</text>
-                  </view>
-                </view>
-              </view> -->
-					<!-- <view class="margin-top-sm flex justify-between">
-										<view class="text-gray text-df">{{item.cdate}}</view>
-										<view>
-											<text class="cuIcon-deletefill margin-lr-xs  text-green" wx:if="{{item.uid==myopenid}}" bindtap='deletes' id="{{keys}}">删除</text>
-											<text class="cuIcon-messagefill margin-lr-xs text-green" bindtap='mypinglun' id="{{keys}}">回复</text>
-										</view>
-									</view>
-								</view>
+					<block wx:if="{{items.contentType ==='text_video'}}">
+						<view class="grid flex-sub padding-lr col-1 grid-square}}">
+							<view class="bg-img">
+								<video src="{{item.contentVideo}}"> </video>
 							</view>
-						</block>
+						</view>
+					</block>
+					<block wx:else>
+						<view class="grid flex-sub padding-lr {{items.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
+							<view class="bg-img" wx:for="{{items.contentImages}}" wx:keys wx:for-item="item">
+								<image src="{{item}}" mode="aspectFill" catchtap="onMessageImageTap" data-fileid="{{item}}"></image>
+							</view>
+						</view>
+					</block>
+					<view class="text-gray text-lg text-right padding" catchtap>
+						<text class="cuIcon-attentionfill margin-lr-sm"></text>
+						<text>{{items.wxDiscoverStatistics.statisticsLookNum}}</text>
+						<text class="cuIcon-appreciatefill margin-lr-sm {{items.status?'text-red':''}} animation-{{animation[index]==name?name:''}} animation-reverse" bindtap='goodTap' data-id="{{index}}" data-class="{{name}}"></text>
+						<text wx:if="{{items.wxDiscoverStatistics.statisticsGoodNum==0}}">赞</text>
+						<text wx:else>{{items.wxDiscoverStatistics.statisticsGoodNum}}</text>
+						<text class="cuIcon-messagefill margin-lr-sm" bindtap="navCommentTap" data-id="{{index}}"></text>
+						<text wx:if="{{items.wxDiscoverStatistics.statisticsCommentNum==0}}" bindtap="navCommentTap">评论</text>
+						<text wx:else>{{items.wxDiscoverStatistics.statisticsCommentNum}}</text>
 					</view>
-				</view>
-			</view> -->
-					<!-- <form bindsubmit='sendcomment' id="{{key}}">
-				<view class="cu-bar foot input" style="bottom:{{InputBottom}}px" hidden="{{hiddenform}}">
-					<view class="action">
-						<text class="cuIcon-write text-grey"></text>
-					</view>
-					<input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" name="udiscuss" value="{{inputVal}}" adjust-position="{{false}}" focus="{{false}}" maxlength="100" cursor-spacing="10"></input>
-					<view class="action">
-						<text class="cuIcon-roundclosefill text-grey" bindtap="closetap"></text>
-					</view>
-					<button class="cu-btn bg-green shadow" form-type="submit">发送</button>
-				</view>
-			</form> -->
 				</view>
 			</view>
 		</block>
 	</view>
-	<view style="height:10vh"></view>
+	<view class="content-box" hidden="{{TabCur!=3}}">
+		<block wx:for="{{3}}">
+			<view class="cu-card case no-card margin-tb-sm">
+				<view class="cu-item shadow">
+					<view class="image">
+						<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
+						<view class="cu-tag bg-blue">详情</view>
+						<view class="cu-bar bg-shadeBottom">
+							<text class="text-cut">我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。</text>
+						</view>
+					</view>
+					<view class="cu-list menu-avatar">
+						<view class="cu-item">
+							<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+							<view class="content flex-sub">
+								<view class="text-grey">正义天使 凯尔</view>
+								<view class="text-gray text-sm flex justify-between">
+									十天前
+									<view class="text-gray text-sm">
+										<text class="cuIcon-attentionfill margin-lr-xs"></text> 10
+										<text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
 </scroll-view>
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" bindtap="hideModalTap">
+	<view class="cu-dialog" catchtap>
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">更多功能</view>
+			<view class="action" bindtap="hideModalTap">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="grid col-1 padding-sm">
+		<view class="padding-xs">
+				<button size="mini" class="cu-btn  lg block bg-yellow margin-sm" bindtap="contentDeleteTap" hidden="{{isMyseft}}">删除</button>
+				<button size="mini" class="cu-btn  lg block bg-yellow margin-sm" bindtap="ChooseCheckbox"  hidden="{{!isMyseft}}">关注</button>
+				<button size="mini" class="cu-btn  lg block bg-yellow margin-sm" bindtap="ChooseCheckbox"  hidden="{{!isMyseft}}">匿名举报</button>
+			</view>
+		</view>
+	</view>
+</view>
+<view style="height:7vh"></view>

@@ -64,7 +64,7 @@
 
 .body .message.message__self>.main .text-content::after {
   content: "";
-  top: 60rpx;
+  top: 90rpx;
   transform: rotate(45deg);
   position: absolute;
   z-index: 1;
@@ -85,7 +85,7 @@
 
 .body .message.message__right>.main .text-content::before {
   content: "";
-  top: 60rpx;
+  top: 90rpx;
   transform: rotate(45deg);
   position: absolute;
   z-index: 1;

@@ -142,7 +142,7 @@ Component({
       var openid = app.globalData.openid;
       var roomid = this.properties.getRoomId
       SocketTask = wx.connectSocket({
-        url: 'ws://www.linkcool.fun:8088/wechatapi/' + openid + "/" + roomid,
+        url: wxChatUrl + openid + "/" + roomid,
         header: {
           'content-type': 'application/json'
         },
@@ -188,10 +188,10 @@ Component({
         success: res => {
           imgList = res.tempFilePaths
           console.log(imgList)
+          var uploadData=[]
           imgList.forEach(function (item, index) {
             const url=dataUrl.uploadUrl
             upload.asyncUpload(url,item,'file').then(res=>{
-              var uploadData=[]
               uploadData.push({'index':index,'imageUrl':res.data.url})
                uploadData.forEach(function (item, index){
                  setTimeout(function(){

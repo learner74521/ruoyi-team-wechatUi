@@ -1,0 +1,59 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">分享动态</view>
+</cu-custom>
+<form bindsubmit='sendtap'>
+	<view class="cu-bar bg-white">
+		<view class="action {{warn == true ? 'text-pink':'text-blue'}}">
+			<text class="cuIcon-title"></text>{{warnTitle}}
+		</view>
+		<view class="action">
+			<button class="cu-btn round line-blue" size='mini' form-type="submit" disabled="{{check}}">
+				<text class="cuIcon-upload"></text>发表</button>
+		</view>
+	</view>
+	<view class="cu-form-group align-start margin-top-xl">
+		<view class="title">发言内容</view>
+		<textarea maxlength="500"  bindinput="textareaInput" placeholder="小主~不要超过500个字哦！"></textarea>
+	</view>
+	<view class="cu-bar bg-white margin-top-xl">
+		<view class="action">
+			<text class="cuIcon-title text-blue"></text>
+			上传图片
+		</view>
+		<view class="action">
+			{{imgList.length}}/9
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="viewImage" data-url="{{imgList[index]}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="delImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<9}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	<view class="cu-bar bg-white margin-top-xl">
+		<view class="action">
+			<text class="cuIcon-title text-blue"></text>选择标签
+		</view>
+		<view class="action">
+			<view class="padding" wx:for="{{labelList}}" wx:key wx:if="{{item.name!='white'}}">
+				<view class="cu-tag round line-{{item.name}}" bindtap="delLabelTap" data-id="{{index}}">{{item.title}}</view>
+			</view>
+		</view>
+		<view class="action">
+			{{labelList.length}}/1
+		</view>
+	</view>
+	<view class="padding-sm flex flex-wrap">
+		<view class="padding" wx:for="{{ColorList}}" wx:key wx:if="{{item.name!='white'}}">
+			<view class="cu-tag round line-{{item.name}}" bindtap="chooseLabelTap" data-id="{{index}}">{{item.title}}</view>
+		</view>
+	</view>
+</form>

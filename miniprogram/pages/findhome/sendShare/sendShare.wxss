@@ -1,0 +1,4 @@
+/* pages/findhome/sendShare/sendShare.wxss */
+page {
+  background: #b8fff3;
+}

@@ -1,0 +1,37 @@
+/* pages/findhome/sendRecruit/sendRecruit.wxss */
+page {
+  background: linear-gradient(#e9f7e0, #b8fff3);
+}
+
+.textarea-wrp {
+  margin-top: 50rpx;
+  margin-bottom: 140rpx;
+}
+.wx_button_nd{
+ padding-top: 50rpx;
+ padding-bottom: 30rpx;
+}
+.wx_button {
+  float: right;
+}
+
+.wx_textarea {
+  padding-left: 15px;
+}
+
+button_sj {
+  display: flex;
+  right: 50rpx;
+}
+
+.wx_img1 {
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  background-size: 100% 100%;
+  z-index: -20;
+}
+
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
