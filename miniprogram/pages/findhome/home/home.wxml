@@ -52,7 +52,7 @@
 					<block wx:else>
 						<view class="grid flex-sub padding-lr {{items.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
 							<view class="bg-img" wx:for="{{items.contentImages}}" wx:keys wx:for-item="item">
-								<image src="{{item}}" mode="aspectFill" catchtap="onMessageImageTap" data-fileid="{{item}}"></image>
+								<image src="{{https+item}}" mode="aspectFill" catchtap="onMessageImageTap" data-fileid="{{https+item}}"></image>
 							</view>
 						</view>
 					</block>

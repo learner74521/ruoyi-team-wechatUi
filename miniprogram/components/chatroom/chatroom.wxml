@@ -11,7 +11,7 @@
 				<view class="nickname">{{item.wxChatUserInfo.creatorName}}</view>
 				<block wx:if="{{item.newsType === 'image'}}">
 					<view class="image-wrapper">
-						<image src="{{item.newsImage}}" data-fileid="{{item.newsImage}}" class="image-content" mode="scallToFill" bindtap="onMessageImageTap"></image>
+						<image src="{{https+item.newsImage}}" data-fileid="{{https+item.newsImage}}" class="image-content" mode="scallToFill" bindtap="onMessageImageTap"></image>
 					</view>
 				</block>
 				<block wx:else>

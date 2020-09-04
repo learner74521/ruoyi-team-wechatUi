@@ -26,6 +26,7 @@ Component({
   },
 
   data: {
+    https: "https://www.linkcool.fun",
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
@@ -192,7 +193,7 @@ Component({
           imgList.forEach(function (item, index) {
             const url=dataUrl.uploadUrl
             upload.asyncUpload(url,item,'file').then(res=>{
-              uploadData.push({'index':index,'imageUrl':res.data.url})
+              uploadData.push({'index':index,'imageUrl':res.data.fileName})
                uploadData.forEach(function (item, index){
                  setTimeout(function(){
                  that.send("image",item.imageUrl),100

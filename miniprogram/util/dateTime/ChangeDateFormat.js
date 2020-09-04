@@ -28,5 +28,5 @@ function formatNumber(n) {
 }
 
 module.exports = {
-  ChangeDateFormat: ChangeDateFormat,
+   ChangeDateFormat,
 }

@@ -1,8 +1,9 @@
 //index.js
 const app = getApp();
-var url=require("../../util/dataUrl/dataUrl.js");
-var nowDateTime=require("../../util/dateTime/nowDateTime.js")
-const imageUrl=require("../../util/imageUrl/imageUrl.js")
+var dataUrl = require("../../util/dataUrl/dataUrl.js");
+var request = require("../../util/request/request.js");
+var nowDateTime = require("../../util/dateTime/nowDateTime.js")
+const imageUrl = require("../../util/imageUrl/imageUrl.js")
 Page({
   data: {
     bgGif: imageUrl.loadingGifUrl,
@@ -11,20 +12,15 @@ Page({
     chooseIndex: 0, //选择个数d
     gameIndex: null, //热门游戏索引
     modelIndex: null, //喜欢模式的索引
-    userList: {
-      openid: "", //用户唯一标识
-      nickName: "", //昵称
-      gamelist: [{
-          gameName: '', //游戏名
-          gameModelName: '' //喜欢的游戏模式
-        },
-        {
-          gameName: '',
-          gameModelName: ''
-        }
-      ],
-
-    },
+    list: [{
+        interestName: '', //游戏名
+        interestModelName: '' //喜欢的游戏模式
+      },
+      {
+        interestName: '',
+        interestModelName: ''
+      }
+    ],
     interestList: [{
         img: "../../images/game1.png",
         name: "和平精英",
@@ -97,10 +93,6 @@ Page({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
-        userList.openid = res.result.openid
-        that.setData({
-          userList: userList
-        })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
@@ -138,17 +130,17 @@ Page({
     var index = e.currentTarget.dataset.id;
     var interestList = []
     var interestList = that.data.interestList;
-    var userList = that.data.userList;
+    var list = that.data.list;
     // 当点击次数小于等于2次或者选择已点击按钮处罚
     if (chooseIndex < 2 || interestList[index].isOk == true) {
       if (interestList[index].isOk == false && index != 5) {
         interestList[index].isOk = true; //赋值已被选中
         //选中将值赋给用户对象
-        if (userList.gamelist[chooseIndex].gameName == "") {
-          userList.gamelist[chooseIndex].gameName = interestList[index].name
+        if (list[chooseIndex].interestName == "") {
+          list[chooseIndex].interestName = interestList[index].name
         }
         that.setData({
-          userList: userList,
+          list: list,
           interestList: interestList,
           chooseIndex: chooseIndex + 1 //点击次数+1
         })
@@ -156,16 +148,16 @@ Page({
       } else if (interestList[index].isOk == true) {
         interestList[index].isOk = false;
         for (let i = 0; i < 2; i++) {
-          if (userList.gamelist[i].gameName == interestList[index].name) {
-            userList.gamelist.splice(i, 1) //删除当前对象，i代表索引，1代表从i开始删除几个
-            userList.gamelist.push({ //增加一个对象
-              gameName: '',
-              gameModelName: ''
+          if (list[i].interestName == interestList[index].name) {
+            list.splice(i, 1) //删除当前对象，i代表索引，1代表从i开始删除几个
+            list.push({ //增加一个对象
+              interestName: '',
+              interestModelName: ''
             })
           }
         }
         that.setData({
-          // userList:userList,
+          list: list,
           interestList: interestList,
           chooseIndex: chooseIndex - 1
         })
@@ -207,14 +199,14 @@ Page({
   //选择喜欢的模块
   gameModelTap: function (e) {
     var index = e.currentTarget.dataset.id;
-    var userList = this.data.userList;
+    var list = this.data.list;
     var gameIndex = this.data.gameIndex;
     var interestModelList = this.data.interestModelList;
     var chooseIndex = this.data.chooseIndex;
     //喜欢的模块赋值给用户对象
-    userList.gamelist[chooseIndex - 1].gameModelName = interestModelList[gameIndex].modelName[index];
+    list[chooseIndex - 1].interestModelName = interestModelList[gameIndex].modelName[index];
     this.setData({
-      userList: userList,
+      list: list,
       modelIndex: e.currentTarget.dataset.id,
     })
   },
@@ -227,30 +219,32 @@ Page({
       var userInfo = e.detail.userInfo;
       app.globalData.userInfo = e.detail.userInfo;
       // var userList=this.data.userList;
-      var userList = {
+      var url = dataUrl.userAddUrl
+      var interestUrl = dataUrl.interestAddUrl
+      var list = this.data.list
+      var interestData = {
+        "interestOpenid": app.globalData.openid,
+        "interestGamename": list[0].interestName,
+        "interestModel": list[0].interestModelName,
+        "interestGamenameNd": list[1].interestName,
+        "interestModelNd": list[1].interestModelName,
+      }
+      var data = {
         "wxName": userInfo.nickName,
-        "wxOpenid":1111222,
+        "wxOpenid": app.globalData.openid,
         "wxAvatar": userInfo.avatarUrl,
         "wxSex": userInfo.gender
       }
-      wx.request({
-        url: 'http://localhost:80/wechatapi/wxuser/add',
-        header: {
-          'content-type': 'application/json'
-        },
-        method: 'POST',
-        data: JSON.stringify(userList),
-        dataType: 'json',
-        success: (result) => {
-          console.log(result.data)
-        },
-        fail: (res) => {
-          console.log(res)
-        },
+      request.request_json_post(url, JSON.stringify(data)).then(res => {
+        if (res.code == 0) {
+          request.request_json_post(interestUrl, JSON.stringify(interestData)).then(res => {
+            console.log(res)
+            wx.reLaunch({
+              url: '../bottomnav/bottomnav',
+            })
+          })
+        }
       })
     }
-    wx.reLaunch({
-      url: '../bottomnav/bottomnav',
-    })
   }
 })

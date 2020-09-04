@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    https: "https://www.linkcool.fun",
+    // https: "http://localhost:8088",
     onConfirmSendText: 'onCommentSendText', //发送按钮
     isReply: false, //是否评论回复
     showBcak: false, //隐藏返回按钮

@@ -14,6 +14,7 @@ function asyncUpload(url, item, key){
         'Content-Type': 'multipart/form-data'
       },
       success(res) {
+        console.log(res)
         var filedata = JSON.parse(res.data) //返回字符串转化为json对象
         resolve({
           data: filedata

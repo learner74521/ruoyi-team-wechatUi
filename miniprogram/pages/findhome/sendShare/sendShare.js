@@ -32,9 +32,10 @@ Page({
     imgList.forEach(function (item, index) {
       const url = dataUrl.uploadUrl
       upload.asyncUpload(url, item, 'file').then(res => {
+        console.log(res.data)
         uploadData.push({
           'index': index,
-          'imageUrl': res.data.url
+          'imageUrl': res.data.fileName
         })
         result = algorithm.sortLsit(uploadData) //冒泡排序
       })
@@ -76,6 +77,7 @@ Page({
    })
 
   },
+                                                                                                                                  
   /**
    * 编辑发言内容
    * @param {*} e  

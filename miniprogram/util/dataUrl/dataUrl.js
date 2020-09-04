@@ -21,7 +21,9 @@ module.exports = {
   commentAddUrl: prefix + "/wechatapi/comment/add",
   commentDeleteUrl: prefix + "/wechatapi/comment/delete",
   replyAddUrl: prefix + "/wechatapi/reply/add",
-  replyDeleteUrl: prefix + "/wechatapi/reply/delete"
-
-  
+  replyDeleteUrl: prefix + "/wechatapi/reply/delete",
+  signAddUrl: prefix+"/wechatapi/sign/add",
+  signUrl: prefix+"/wechatapi/sign/list",
+  userAddUrl: prefix+"/wechatapi/wxuser/add",
+  interestAddUrl: prefix+"/wechatapi/interest/add"
 }

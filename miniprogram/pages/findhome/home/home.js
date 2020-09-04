@@ -16,7 +16,8 @@ Component({
     navIndex:null,
     isMyseft: true, //判断是否是用户
     name: 'scale-down', //点赞动画效果名
-    // https: "https://www.linkcool.fun",
+    https: "https://www.linkcool.fun",
+    // https: "http://localhost:8088",
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
