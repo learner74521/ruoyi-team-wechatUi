@@ -1,4 +1,5 @@
-<cu-custom  bgImage="{{bgTopUrl}}">
+<!-- <cu-custom  bgImage="{{bgTopUrl}}"> -->
+<cu-custom bgImage="{{bgTopUrl}}">
 	<view slot="right">
 		<view class="cu-bar search" style="width:750rpx ">
 			<view class="search-form round">
@@ -8,22 +9,47 @@
 		</view>
 	</view>
 </cu-custom>
-<scroll-view scroll-y class="scrollPage">
-<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
-	<swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}" touch-action="none">
-		<view class="swiper-item">
-			<image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-			<!-- 轮播图中加视频 -->
-			<!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+<!-- <view class="cu-bar bg-white top-bar">
+	<view class="content text-bold"></view>
+</view> -->
+<scroll-view scroll-y class="scrollPage" style="height:calc(100vh - {{CustomBar}}px)" bindscroll="onScrollChange"
+	bindscrolltolower="onScrolltolower">
+	<swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+		duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+		<swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}" touch-action="none" bindtap="topage" data-index="{{index}}">
+			<view class="swiper-item">
+				<image src="{{https+item.sysImage}}" mode="aspectFit"></image>
+				<!-- 轮播图中加视频 -->
+				<!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+			</view>
+		</swiper-item>
+	</swiper>
+
+	<scroll-view scroll-x class="bg-white nav shadow-warp">
+		<view class="flex text-center">
+			<view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{typeList}}" wx:key="{{index}}"
+				bindtap="tabSelect" data-id="{{index}}" data-type="{{item}}">
+				{{item}}
+			</view>
 		</view>
-	</swiper-item>
-</swiper>
-  <view class="cu-card">
-    <view class="cu-item bg-img shadow-blur" style="background-image:url({{item.img}})" bindtap="toChild" data-url="{{item.url}}" wx:for="{{list}}" wx:key>
-      <view class="cardTitle">
-        {{item.title}}
-      </view>
-    </view>
-  </view>
-  <view class="cu-tabbar-height"></view>
+	</scroll-view>
+
+
+	<view class="team-list-content">
+		<view class="flex team-content" wx:for="{{teamList}}" data-index="{{index}}" bindtap="toDetail">
+			<view class="team-image" style="background-image: url({{item.wxChatUserInfo.creatorAvatar}});"></view>
+			<view class="team-text">
+				<view class="team-name">{{item.roomName}}</view>
+				<view class="team-introduction">{{item.roomIntroduce}}</view>
+				<view class="team-flag">
+					<text class="cuIcon-friend text-blue"></text>人数:{{item.memberNum+1}}<view class="tag-content text-xs">
+						{{typeList[item.roomTypeId]}}</view>
+				</view>
+				<view class="endtime"><text class="cuIcon-time text-blue"></text>解散时间:{{item.endTime}}</view>
+			</view>
+		</view>
+	</view>
+  <view class="text-center margin-top text-grey" wx:if="{{teamList.length==0}}">小主~，暂时未有数据！</view>
+	<view class="bottom-height">
+	</view>
 </scroll-view>

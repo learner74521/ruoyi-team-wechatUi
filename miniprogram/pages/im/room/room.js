@@ -19,8 +19,9 @@ Page({
 
   onLoad: function (options) {
     var roomid = options.roomid;
-    roomid=111 
-    
+    // roomid=111 
+    console.log("roomid:" + roomid)
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -58,7 +59,7 @@ Page({
     })
   },
 
-  
+
   onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({

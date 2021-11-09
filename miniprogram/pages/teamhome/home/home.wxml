@@ -1,39 +1,71 @@
-<view class="cu-custom bg-img" style="height:{{CustomBar+100}}px;})">
-	<!-- 视频背景 -->
-	<video src="{{bgVideo}}" style="width:100%;height:{{CustomBar+100}}px;})" autoplay="{{true}}" loop="{{true}}" muted="{{true}}" show-play-btn="{{true}}" controls="{{false}}" object-fit="cover" show-fullscreen-btn="{{false}}" show-center-play-btn="{{false}}"></video>
+<view class="main">
+	<cu-custom>
+	</cu-custom>
+	<view class="top-box">
+	</view>
+	<view class="center-box" style="background-image:url({{centerCircle}})">
+	</view>
+	<view class="center-map" style="background-image:url({{map}})">
+	</view>
+	<view class="team-list">
+		<view class="flex padding justify-start team-content {{toggleDelay?'animation-slide-left':''}}"
+			style="animation-delay: 1s;">
+			<view class="padding-sm margin-left margin-top team" bindtap="derailsTap" data-index="0">
+				<view class="team-image" style="background-image:url({{teamList[0].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[0].roomName}}
+				</view>
+			</view>
+			<view class="padding-sm padding-left-sm team" bindtap="derailsTap" data-index="1">
+				<view class="team-image" style="background-image:url({{teamList[1].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[1].roomName}}
+				</view>
+			</view>
+		</view>
+		<view class="flex padding justify-end team-content {{toggleDelay?'animation-slide-right':''}}"
+			style="animation-delay: 0.5s;">
+			<view class="margin-xs team" bindtap="derailsTap" data-index="2">
+				<view class="team-image" style="background-image:url({{teamList[2].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[2].roomName}}
+				</view>
+			</view>
+			<view class="padding-sm margin-xs team" bindtap="derailsTap" data-index="3">
+				<view class="team-image" style="background-image:url({{teamList[3].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[3].roomName}}
+				</view>.
+			</view>
+		</view>
+		<view class="flex padding justify-center team-content {{toggleDelay?'animation-slide-left':''}}"
+			style="animation-delay: 1.5s;">
+			<view class="padding-sm margin-xs team" bindtap="derailsTap" data-index="4">
+				<view class="team-image" style="background-image:url({{teamList[4].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[4].roomName}}
+				</view>
+			</view>
+			<view class="padding-sm team" bindtap="derailsTap" data-index="5">
+				<view class="team-image" style="background-image:url({{teamList[5].wxChatUserInfo.creatorAvatar}})"></view>
+				<view class="team-name">
+					<text class="cuIcon-title text-blue"></text>{{teamList[5].roomName}}
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- <view class="select-content">
+		<button class="cu-btn lg round bg-white shadow button-hover select-btn" role="button" aria-disabled="false">加入的小组</button>
+		<button class="cu-btn lg round bg-white shadow button-hover select-btn" role="button" aria-disabled="false">创建的小组</button>
+	</view> -->
+
+	<view class="select-content" style="background-color: rgb(104, 202, 231)" bindtap="topage" data-type="1">
+		<text>我的队伍</text>
+		<view class="selectLogo" style="background-image:url({{selectBtn[1]}})"></view>
+	</view>
+	<view class="select-content" style="background-color: rgb(253, 116, 116)" bindtap="topage" data-type="0">
+		<text>创建队伍</text>
+		<view class="selectLogo" style="background-image:url({{selectBtn[0]}})"></view>
+	</view>
 </view>
-<scroll-view scroll-x class="bg-white nav">
-	<view class="flex text-center">
-		<view class="cu-item flex-sub {{index==TabCur?'text-green cur':''}}" wx:for="{{topNavList}}" wx:key bindtap="tabSelect" data-id="{{index}}">
-			{{item.name}}
-		</view>
-	</view>
-</scroll-view>
-<scroll-view scroll-y style="height:calc(100vh - {{CustomBar+190}}px)">
-	<view class="cu-list menu-avatar">
-		<view class="cu-item cu-item-sm solid-bottom {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{teamname}}" wx:key >
-			<view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);">
-			</view>
-			<view class="content"> 
-				<view class="text-grey">
-					<text class="text-cut">{{item}}</text>
-					<view class="cu-tag round bg-{{TabColor!=null?TabColor:''}} sm">{{TabName}}</view>
-				</view>
-				<view class="text-gray text-sm flex">
-					<text class="text-cut">一起回滕州，2020-2-30日早上8点出发，欢迎加入我们的车队</text>
-				</view>
-			</view>
-			<view class="action action-sm">
-				<view class="cu-btn round bg-green cuIcon-btn " bindtap="moveTap" data-target="move-box-{{index}}" data-tap="left" wx:if="{{TabIndex!=index}}" data-id="{{index}}"></view>
-				<view class="cu-btn round bg-green cuIcon-right " bindtap="moveTap" data-tap="right" data-id="{{index}}" wx:else></view>
-			</view>
-			<view class="move">
-				<view class="bg-cyan" wx:if="{{TabCur==3}}">修改</view>
-				<view class="bg-cyan" wx:else>详情</view>
-				<view class="bg-red" wx:if="{{TabCur==2}}">退队</view>
-				<view class="bg-red" wx:elif="{{TabCur==3}}">解散</view>
-				<view class="bg-orange" wx:else>加入</view>
-			</view>
-		</view>
-	</view>
-</scroll-view>

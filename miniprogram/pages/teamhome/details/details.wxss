@@ -1,0 +1,128 @@
+/* pages/teamhome/details/details.wxss */
+@import"../../../style/selectBtn.wxss";
+/* 弧形背景 */
+.bg-gradual-cyan{
+	background-color: #1ABAB3;
+  color: white;
+}
+
+.bg-content {
+	display: relative;
+	flex-direction: column;
+	align-items: center;
+	height: 400rpx;
+}
+
+.bg-content::after {
+	content: '';
+	width: 120%;
+	height: 400rpx;
+	position: absolute;
+	z-index: -1;
+	left: -10%;
+	top: 0;
+	border-radius: 0 0 50% 50%;
+	background: linear-gradient(160deg, #1ABAB3, #1ABAB3);
+}
+
+/* 白色圆角方块背景 */
+#title-content {
+	position: relative;
+	top: -350rpx;
+	margin: auto;
+	height: 350rpx;
+	width: 90%;
+	background-color: #fff;
+	border-radius: 20rpx;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+#title-text {
+	color: black;
+	height: 150rpx;
+	text-align: center;
+	font-size: 35rpx;
+	margin: auto;
+	padding-top: 30rpx;
+	width: 80%;
+	border-bottom: 1rpx solid #74d8e2;
+}
+
+#title-content .text-gray {
+	display: block;
+	font-size: 50rpx;
+}
+
+.create_text {
+	font-size: 25rpx;
+}
+
+.create_text_content {
+	display: block;
+}
+
+.team-info-text-content {
+	margin-top: 20rpx;
+	margin-bottom: 40rpx;
+}
+
+#bottom-content {
+	margin: auto;
+	width: 90%;
+}
+
+.click_show {
+	text-align: center;
+	width: 200rpx;
+	margin: auto;
+	padding: 30rpx 0;
+}
+
+.select-content {
+	height: 200rpx;
+	width: 100%;
+	position: relative;
+}
+
+.select-btn {
+	border-radius: 30rpx;
+	height: 150rpx;
+	width: 400rpx;
+	color: #fff;
+	text-align: center;
+}
+
+
+.btntext-content {
+	height: 68rpx;
+	width: 68rpx;
+	margin: auto;
+	margin-top: 10rpx;
+	margin-bottom: 5rpx;
+	border-radius: 50%;
+	background-color: #fff;
+	text-align: center;
+	line-height: 65rpx;
+}
+
+.btntext-content text {
+	font-size: 50rpx;
+}
+
+.btntext-content span {
+	font-size: 50rpx;
+	height: 60rpx;
+}
+
+.join-content {
+	text-align: center;
+	margin: auto;
+}
+
+.intro-title{
+	display: block;
+	margin-bottom: 10rpx;
+}
+.intro-text{
+	margin-left: 20rpx;
+}

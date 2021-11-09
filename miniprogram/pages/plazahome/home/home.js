@@ -1,85 +1,195 @@
+const app = getApp();
+const imageUrl = require("../../../util/imageUrl/imageUrl.js")
+const request = require("../../../util/request/request")
+const dataUrl = require("../../../util/dataUrl/dataUrl.js")
+const teamType = require("../../../util/dataDict/label")
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
+    https: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la',
+    thisuseropenid: '',
     cardCur: 0,
-    bgTopUrl:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/top1.jpg?sign=ce8d7c787157668b57db8e4e92747b9f&t=1586679222",
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }, {
-      id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
-    }],
-    list: [{
-      title: '创业Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza1.jpg?sign=4d625501a036159b3d75b1a984bdaa49&t=1586679556',
-      url: '/indexes/indexes'
+    bgTopUrl: imageUrl.topImageUrl,
+    TabCur: 0,
+    scrollLeft: 0,
+    typeList: teamType.teamType,
+    teamList: [],
+    total: '',
+    pageNum: 1,
+    swiperList: [],
+    navIndex: null
   },
-    {
-      title: '租车Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza2.jpg?sign=a4d90bfcda59ce58ecb3971396408bc3&t=1586679190',
-      url: '/animation/animation'
+
+
+  lifetimes: {
+    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+    attached: function () {
+      this.setData({
+        thisuseropenid: app.globalData.openid,
+      })
+      var url = dataUrl.chatRoomUrl
+      var data = {
+        roomTypeId: 0,
+        pageNum: 1,
+        pageSize: 6
+      }
+      request.request_json_post(url, data).then(res => {
+        console.log(res)
+        this.setData({
+          teamList: res.rows,
+          total: res.total
+        })
+      })
+      var sysurl = dataUrl.sysChatUrl
+      var sysdata = {
+        pageNum: 1,
+        pageSize: 5
+      }
+      request.request_json_post(sysurl, sysdata).then(res => {
+        console.log(res)
+        this.setData({
+          swiperList: res.rows,
+        })
+      })
+
     },
-    {
-      title: '游戏Team',
-      img: 'https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/plaza3.jpg?sign=52a5e66eab3c10028c1ea6f12b147bc6&t=1586679209',
-      url: '/gameteam/gameteam'
-    }
-  ]
-},
-
-lifetimes: {
-  // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-  attached: function () { console.log("attached")},
-  moved: function () {console.log("moved") },
-  detached: function () { console.log("detached")},
-},
-pageLifetimes: {
-  // 组件所在页面的生命周期函数
-  show: function () {console.log("show") },
-  hide: function () {console.log("hide") },
-  resize: function () { console.log("resize")},
-},
-
-
-  
-methods:{
-   // cardSwiper
-   cardSwiper(e) {
-    this.setData({
-      cardCur: e.detail.current
-    })
+    moved: function () {
+      console.log("moved")
+    },
+    detached: function () {
+      console.log("detached")
+    },
   },
-  toChild(e){
-    var profix=e.currentTarget.dataset.url
-    console.log(profix)
-    wx.navigateTo({
-      url: '/pages/plazahome'+profix,
-    })
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () {
+      var navIndex = this.data.navIndex;
+      var teamList = this.data.teamList;
+      if (navIndex != null) {
+        if (wx.getStorageSync('update')) {
+          console.log(wx.getStorageSync('peopleNum'))
+          teamList[navIndex].memberNum = wx.getStorageSync('peopleNum');
+          wx.removeStorageSync('update')
+          wx.removeStorageSync('peopleNum') //清除缓存
+        } else if (wx.getStorageSync('remove')) {
+          console.log(wx.getStorageSync('remove'))
+          teamList.splice(navIndex, 1)
+          wx.removeStorageSync('remove') //清除缓存
+        }
+        this.setData({
+          teamList: teamList
+        })
+      }
+    }
+  },
+  methods: {
+    // cardSwiper
+    cardSwiper(e) {
+      this.setData({
+        cardCur: e.detail.current,
+      })
+    },
+    /**
+     * 搜索
+     */
+    searchTap(e) {
+      wx.navigateTo({
+        url: '../plazahome/searchteam/searchteam',
+      })
+    },
+    /**
+     * 进入小组 
+     */
+    toDetail(e) {
+      var index = e.currentTarget.dataset.index
+      this.setData({
+        navIndex: index
+      })
+      wx.navigateTo({
+        url: '../teamhome/details/details?data=' + JSON.stringify(this.data.teamList[index]),
+        // url: '../teamhome/details/details',
+      })
+    },
+    /**
+     * 切换菜单栏事件 
+     */
+    tabSelect(e) {
+      this.setData({
+        TabCur: e.currentTarget.dataset.id,
+        scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      })
+      console.log(this.data.TabCur)
+      this.setData({
+        reqtype: {
+          roomTypeId: this.data.TabCur
+        }
+      })
+      // 请求筛选队伍列表
+      var url = dataUrl.chatRoomUrl
+      var data = {
+        roomTypeId: this.data.TabCur,
+        pageNum: 1,
+        pageSize: 6
+      }
+      request.request_json_post(url, data).then(res => {
+        console.log(res)
+        this.setData({
+          total: res.total,
+          teamList: res.rows
+        })
+      })
+    },
+
+
+    //获取距离顶部的高度值
+    onScrollChange(e) {
+      var scrollTop = parseInt(e.detail.scrollTop)
+      if (scrollTop <= 300) {
+        this.setData({
+          number: scrollTop / 300
+        })
+      }
+    },
+    /**
+     * 检测底部上滑事件
+     */
+    onScrolltolower(e) {
+      var url = dataUrl.chatRoomUrl
+      if (this.data.teamList.length < this.data.total) { // 判断当前列表元素数量是否小于所有元素之和
+        var data = {
+          roomTypeId: this.data.TabCur,
+          // creatorOpenid: app.globalData.openid
+          pageNum: this.data.pageNum + 1,
+          pageSize: 6
+        }
+        request.request_json_post(url, data).then(res => {
+          console.log(res.rows)
+          var tempList = this.data.teamList // 原列表存入变量
+          tempList.push(...res.rows) // 加入新数据
+          this.setData({
+            total: res.total,
+            teamList: tempList,
+            pageNum: data.pageNum
+          })
+        })
+      } else {
+        wx.showToast({
+          title: '没有更多了！',
+          icon: 'none'
+        })
+      }
+    },
+
+    /**
+     * 点击海报进入表单事件
+     */
+    topage(e) {
+      var index = e.currentTarget.dataset.index
+      wx.navigateTo({
+        url: '../../../../createsysteam/createsysteam?data=' + JSON.stringify(this.data.swiperList[index]),
+      })
+    }
   }
-}
 })

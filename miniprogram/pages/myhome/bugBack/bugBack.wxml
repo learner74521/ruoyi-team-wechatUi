@@ -1,0 +1,38 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">bug反馈</view>
+</cu-custom>
+<view class="cu-bar bg-white">
+	<view class="action">
+		<text class="cuIcon-title text-pink"></text>反馈问题
+	</view>
+</view>
+<view class="cu-form-group padding-left-xl">
+	<textarea  bindinput="textareaInput" maxlength="150" placeholder="请输入反馈内容" value="{{text}}"></textarea>
+</view>
+<view class="cu-bar bg-white margin-top">
+	<view class="action">
+	<text class="cuIcon-title text-pink"></text>截图上传
+	</view>
+	<view class="action">
+		{{imgList.length}}/3
+	</view>
+</view>
+<view class="cu-form-group">
+	<view class="grid col-3 grid-square flex-sub">
+		<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="viewImage" data-id="{{index}}">
+			<image src='{{item}}' mode='aspectFill'></image>
+			<view class="cu-tag bg-red" catchtap="delImg" data-index="{{index}}">
+				<text class="cuIcon-close"></text>
+			</view>
+		</view>
+		<view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<3}}">
+			<text class="cuIcon-cameraadd"></text>
+		</view>
+	</view>
+</view>
+<view class="padding-xl margin-top">
+  <button class="cu-btn block bg-olive lg" size="mini" bindtap="sendtap">
+   提交反馈
+	</button>
+</view>

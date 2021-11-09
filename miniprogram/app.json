@@ -1,32 +1,47 @@
 {
   "pages": [
-    "pages/bottomnav/bottomnav",
     "pages/login/login",
+    "pages/bottomnav/bottomnav",
     "pages/im/room/room",
     "pages/myhome/home/home",
-    "pages/findhome/home/home",
-    "pages/plazahome/home/home",
     "pages/newshome/home/home",
     "pages/teamhome/home/home",
-    "pages/plazahome/gameteam/gameteam",
-    "pages/map/map",
-    "pages/map/weather/weather"
-
+    "pages/findhome/home/home",
+    "pages/findhome/comment/comment",
+    "pages/findhome/sendShare/sendShare",
+    "pages/findhome/report/report",
+    "pages/plazahome/home/home",
+    "pages/map/weather/weather",
+    "pages/myhome/vip/vip",
+    "pages/myhome/idCard/idCard",
+    "pages/myhome/idCard/stuCard/stuCrad",
+    "pages/myhome/idCard/identity/identity",
+    "pages/myhome/log/log",
+    "pages/myhome/sign/sign",
+    "pages/myhome/help/help",
+    "pages/myhome/sysNews/sysNews",
+    "pages/myhome/bugBack/bugBack",
+    "pages/myhome/about/about",
+    "pages/myhome/join/join",
+    "pages/myhome/setting/setting",
+    "pages/teamhome/details/details",
+    "pages/myhome/help/helpDetail/helpDetail",
+    "pages/teamhome/myteam/myteam",
+    "pages/teamhome/createteam/createteam",
+    "pages/plazahome/searchteam/searchteam",
+    "pages/createsysteam/createsysteam"
   ],
-
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将方便您对小程序的体验!"
     }
   },
-
   "plugins": {
     "routePlan": {
       "version": "1.0.6",
       "provider": "wx50b5593e81dd937a"
     }
   },
-
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
     "navigationBarTitleText": "Team",

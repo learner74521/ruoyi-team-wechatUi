@@ -1,0 +1,152 @@
+<!--pages/teamhome/details/details.wxml-->
+<!-- <cu-custom id="bg-gradual-cyan" isBack="{{true}}">
+	<view slot="backText">返回</view>
+</cu-custom> -->
+<view class='cu-custom'  style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed bg-gradual-cyan" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='cuIcon-back'></text> 返回
+    </navigator>
+  </view>
+</view>
+<!-- 弧形背景 -->
+<view class="bg-content">
+</view>
+<!-- 白色圆角方块背景 -->
+<view id="title-content">
+	<view id="title-text">
+		{{teamInfo.roomName}}
+	</view>
+	<view class="grid col-3 margin-bottom text-center">
+		<view class="padding">
+			<view class="create_text_content">
+				<text class="cuIcon-profile lg text-gray"></text>
+				<!-- <text class="create_text">创建人</text> -->
+			</view>
+			<view class="create_text_content">
+				<text class="create_text">{{teamInfo.wxChatUserInfo.creatorName}}</text>
+			</view>
+		</view>
+
+		<view class="padding">
+			<view class="create_text_content">
+				<text class="cuIcon-friend lg text-gray"></text>
+				<!-- <text class="create_text">人数</text> -->
+			</view>
+			<view class="create_text_content">
+				<text class="create_text">{{teamInfo.memberNum+1}}人</text>
+			</view>
+		</view>
+
+		<view class="padding">
+			<view class="create_text_content">
+				<text class="cuIcon-time lg text-gray"></text>
+				<!-- <text class="create_text">创建时间</text> -->
+			</view>
+			<view class="create_text_content">
+				<text class="create_text">{{teamInfo.createTime}}</text>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 下部分内容 -->
+	<view id="bottom-content">
+		<!-- 小组介绍显示隐藏按钮 -->
+		<view class="text-center padding-top-xs " bindtap="click_show">
+			<text class="cuIcon-unfold" hidden="{{!intro_hiddenName}}"></text>
+			<text class="cuIcon-fold" hidden="{{intro_hiddenName}}"></text>
+			<!-- {{selectshow}} -->
+		</view>
+
+		<!-- 小组介绍 -->
+		<view hidden="{{intro_hiddenName}}"
+			class="team-info-text-content padding-xl radius shadow-warp bg-white margin-top">
+
+			<view class="grid col-1 margin-bottom text-left">
+				<view class="margin-sm">
+					<view class="intro-title">
+						<text class="cuIcon-title text-red"></text>队伍ID:
+					</view>
+					<view class="intro-text">
+						{{teamInfo.roomId}}
+					</view>
+				</view>
+				<view class="margin-sm">
+					<view class="intro-title">
+						<text class="cuIcon-title text-orange"></text>截止时间:
+					</view>
+					<view class="intro-text">
+						{{teamInfo.endTime}}
+					</view>
+				</view>
+				<view class="margin-sm">
+					<view class="intro-title">
+						<text class="cuIcon-title text-blue"></text>队伍介绍:
+					</view>
+					<view class="intro-text">
+						{{teamInfo.roomIntroduce}}
+					</view>
+				</view>
+				<view class="margin-sm">
+					<view class="intro-title">
+						<text class="cuIcon-title text-green"></text>目的地址:
+					</view>
+					<view class="intro-text">
+						{{teamInfo.roomSite}}
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- 功能按钮 -->
+		<view class="select-content" hidden="{{select_hiddenName}}">
+			<view class="flex justify-center">
+				<view class="bg-cyan padding-sm margin-sm select-btn" data-index="0" bindtap="selectAction">
+					<view class="btntext-content">
+						<text class="cuIcon-message text-cyan"></text>
+					</view>
+					<text>{{select[0]}}</text>
+				</view>
+				<view class="bg-blue padding-sm margin-sm select-btn" data-index="1" bindtap="selectAction">
+					<view class="btntext-content">
+						<!-- <text class="cuIcon-location text-blue"></text> -->
+						<span class="iconfont icon-road" style="color:#0F81FD"></span>
+					</view>
+					<text>{{select[1]}}</text>
+				</view>
+			</view>
+			<view class="flex justify-center">
+				<view class="padding-sm margin-sm select-btn" style="background-color:#FEA911" data-index="2"
+					bindtap="selectAction">
+					<view class="btntext-content">
+						<span class="iconfont icon-WeatherIconswidaysunnyovercast" style="color:#FEA911"></span>
+					</view>
+					<text>{{select[2]}}</text>
+				</view>
+				<view class="padding-sm margin-sm select-btn" style="background-color:#FF7309" data-index="3"
+					bindtap="selectAction" hidden="{{!creator_hiddenName}}">
+					<view class="btntext-content">
+						<span class="iconfont icon-c_warring" style="color:#ff7309"></span>
+					</view>
+					<text>{{select[3]}}</text>
+				</view>
+				<view class="padding-sm margin-sm select-btn" style="background-color:#FF7309" bindtap="removeChatRoom"
+					hidden="{{creator_hiddenName}}">
+					<view class="btntext-content">
+						<span class="iconfont icon-c_warring" style="color:#ff7309"></span>
+					</view>
+					<text>解散队伍</text>
+				</view>
+			</view>
+		</view>
+
+
+		<!-- 未加入队伍 -->
+		<view class="join-content" hidden="{{into_hiddenName}}">
+			<button class="cu-btn round bg-cyan shadow button-hover" role="button" bindtap="jointeam">加入队伍</button>
+		</view>
+
+
+	</view>
+</view>

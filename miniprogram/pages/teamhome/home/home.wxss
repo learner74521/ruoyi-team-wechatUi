@@ -1,2 +1,181 @@
 /* pages/teamhome/team/team.wxss */
+@import "../../../colorui/animation.wxss";
 
+/* Page {
+  background-color: #fff;
+} */
+.main {
+	/* background-image: url("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1902286566,297819625&fm=26&gp=0.jpg"); */
+	position: fixed;
+	width: 100%;
+	background-color: #fff;
+	height: 100%;
+
+}
+
+.top-box {
+	height: 40rpx;
+}
+
+.top-title-content {
+	line-height: 60rpx;
+	height: 60rpx;
+	margin-top: 20rpx;
+	margin: auto;
+	width: 200rpx;
+	background-color: #fff;
+	border-radius: 30rpx;
+	text-align: center;
+	font-size: 10pt;
+}
+
+.top-title {
+	color: grey;
+}
+
+.center-box {
+	margin: auto;
+	position: absolute;
+	top: -500rpx;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	width: 620rpx;
+	height: 620rpx;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.center-map {
+	margin: auto;
+	position: absolute;
+	top: -500rpx;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -2;
+	width: 620rpx;
+	height: 620rpx;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+}
+
+
+
+.center-box {
+	animation-name: myfirst;
+	/*动画的名称 */
+	animation-duration: 5000ms;
+	/*动画从开始到结束的时间*/
+	animation-timing-function: linear;
+	/*动画执行快慢的参数*/
+	animation-iteration-count: infinite;
+	/*动画执行多少次的参数*/
+	/*以下是兼容ios所需，参数意义与上相同*/
+	-webkit-animation-name: myfirst;
+	-webkit-animation-duration: 2000ms;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes myfirst {
+
+	/*开始转的角度*/
+	from {
+		transform: rotate(0deg);
+	}
+
+	/*结束的角度*/
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/*兼容ios*/
+@-webkit-keyframes myfirst {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.team-image {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	border: 0.5px solid #fff;
+	display: block;
+	/* background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599991327752&di=c52f6d0088c6c53ce1182abdf18d7411&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F15%2F20180815112433_sttyo.thumb.700_0.jpeg"); */
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+
+.team-name {
+	/* height: 55rpx; */
+	display: -webkit-box;
+	/* display: block; */
+	width: 180rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.team-list {
+	/* margin-top: 50rpx; */
+	/* height: 400rpx; */
+	/* background-size: cover; */
+	background-position: center;
+	background-size: 90%;
+	background-repeat: no-repeat;
+	margin: auto;
+	width: 88%;
+	display: block;
+	margin-bottom: 120rpx;
+}
+
+.team-content {
+	height: 200rpx;
+}
+
+/* .select-content {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 100rpx;
+	margin-top: 80rpx;
+	width: 90%;
+} */
+
+
+.select-content {
+	margin: 45rpx auto;
+	display: block;
+	width: 70%;
+	height: 90rpx;
+	border-radius: 40rpx;
+	text-align: center;
+}
+.select-content text{
+	margin-left: 20rpx;
+	color: #fff;
+	font-size: 40rpx;
+	line-height: 90rpx;
+}
+
+.selectLogo {
+	height: 90rpx;
+	width: 90rpx;
+	float: right;
+	background-size: 100rpx;
+	background-position: center;
+}

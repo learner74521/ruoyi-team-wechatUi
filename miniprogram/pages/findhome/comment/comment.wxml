@@ -1,0 +1,96 @@
+<!--pages/findhome/comment/comment.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">详情</view>
+</cu-custom>
+<scroll-view scroll-y class="scrollPage">
+	<view class="content-box">
+		<view class="cu-card dynamic no-card">
+			<view class="cu-item shadow">
+				<view class="cu-list menu-avatar">
+					<view class="cu-item">
+						<view class="cu-avatar round lg" style="background-image:url({{content.wxChatUserInfo.creatorAvatar}});"></view>
+						<view class="content flex-sub">
+							<view>{{content.wxChatUserInfo.creatorName}}</view>
+							<view class="text-gray text-sm flex justify-between">
+								{{content.createTime}}
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="text-content">
+					{{content.contentText}}
+				</view>
+				<!-- <view class="grid flex-sub padding-lr col-1 grid-square}}" wx:if="{{content.contentType}}==1">
+						<view class="bg-img">
+							<video src="{{item.contentVideo}}"></video>
+						</view>
+					</view> -->
+				<view class="grid flex-sub padding-lr {{content.contentImages.length > 2 ? 'col-3 grid-square':'col-2 grid-square'}}">
+					<view class="bg-img" wx:for="{{content.contentImages}}" wx:key wx:for-item="item">
+						<image src="{{https+item}}" mode="aspectFill" catchtap="onMessageImageTap" data-fileid="{{https+item}}"></image>
+					</view>
+				</view>
+					<view class="text-gray text-df fl padding" wx:if="{{TabCur==2}}">
+						<text class="cuIcon-locationfill padding-right-xs"></text>{{content.contentCity}}</view>
+				<view class="text-gray text-lg text-right padding">
+					<text class="cuIcon-attentionfill margin-lr-sm"></text>
+					<text>{{content.wxDiscoverStatistics.statisticsLookNum}}</text>
+					<!-- <text class="cuIcon-appreciatefill margin-lr-sm {{items.status?'text-red':''}} animation-{{animation==name?name:''}} animation-reverse" bindtap='goodTap' data-class="{{name}}"></text>
+					<text wx:if="{{items.wxDiscoverStatistics.statisticsGoodNum==0}}">赞</text>
+					<text wx:else>{{content.wxDiscoverStatistics.statisticsGoodNum}}</text> -->
+					<text class="cuIcon-messagefill margin-lr-sm"></text>
+					<text wx:if="{{items.wxDiscoverStatistics.statisticsCommentNum==0}}">评论</text>
+					<text wx:else>{{content.wxDiscoverStatistics.statisticsCommentNum}}</text>
+				</view>
+				<view class="cu-list menu-avatar comment solids-top">
+					<block wx:for="{{commentList}}" wx:key="{{commentId}}" wx:for-item="items" wx:for-index='indices'>
+						<view class="cu-item solid-bottom">
+							<view class="cu-avatar round" style="background-image:url({{items.wxChatUserInfo.creatorAvatar}});"></view>
+							<view class="content">
+								<view class="text-grey">{{items.wxChatUserInfo.creatorName}}</view>
+								<view class="text-gray text-content text-df margin-sm">
+									{{items.commentText}}
+								</view>
+								<view class="margin-lr-xs flex justify-between">
+									<view class="text-gray text-df">{{items.createTime}}</view>
+									<view>
+										<text class="cuIcon-deletefill margin-lr-xs  text-grey" bindtap='deleteCommentTap' data-id="{{indices}}" wx:if="{{items.commentUserOpenid==userOpenid}}">删除</text>
+										<text class="cuIcon-messagefill margin-lr-xs  {{items.commentUserOpenid==userOpenid?'text-green':'text-grey'}}" bindtap='replyTap' data-id="{{indices}}" bindtap="CommentReplyTap" wx:else>回复</text>
+									</view>
+								</view>
+								<block wx:for="{{items.wxDiscoverReplyList}}" wx:key="{{commentId}}" wx:for-item="item">
+									<view class="padding-top bg-gray radius padding-sm margin-top-sm">
+										<view class="flex">
+											<view class="cu-avatar round sm" style="background-image:url({{item.wxChatUserInfo.creatorAvatar}});"></view>
+											<view class="text-grey text-df padding-left-sm">{{item.wxChatUserInfo.creatorName}}：</view>
+										</view>
+										<view class="text-gray text-content text-df padding-left-xl padding-sm">{{item.replyText}}</view>
+										<view class=" flex justify-between">
+											<view class="text-gray text-df">{{item.createTime}}</view>
+											<view>
+												<text class="cuIcon-deletefill margin-lr-xs text-grey" bindtap='deleteReplyTap' data-id="{{indices}}"  data-did="{{index}}" wx:if="{{item.fromOpenid==userOpenid}}">删除</text>
+												<text class="cuIcon-messagefill margin-lr-xs text-grey" bindtap='replyTap' data-id="{{indices}}" data-did="{{index}}" wx:else>回复</text>
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view style="height:10vh"></view>
+</scroll-view>
+	<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+		<view class="action" wx:if="{{showBcak}}" bindtap="backCommentTap">
+			<text class="cuIcon-back text-grey"></text>
+		</view>
+		<input class="solid-box bgcolor-gray" adjust-position="{{false}}" focus="{{false}}" bindfocus="InputFocus" bindblur="InputBlur" maxlength="300" type="text" confirm-hold="{{false}}" cursor-spacing="10" value="{{textInputValue}}" confirm-type="done" bindinput="onTextBindnput" placeholder="{{placeholderVaule}}"></input>
+		<view class="action"></view>
+		<view class="action">
+			<text class="cuIcon-pullup text-darkturquoise"  bindtap="{{onConfirmSendText}}" ></text>
+		</view>
+	</view>

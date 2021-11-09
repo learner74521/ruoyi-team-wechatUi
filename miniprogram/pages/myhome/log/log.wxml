@@ -1,0 +1,39 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">更新日志</view>
+</cu-custom>
+<view class="cu-timeline">
+	<view class="cu-time margin-left-lg">版本 1.0.0 bate</view>
+	<view class="cu-item">
+		<view class="content">
+			<view class="cu-capsule radius">
+				<view class="cu-tag bg-cyan">2020年9月1日</view>
+				<view class="cu-tag line-cyan">10:00</view>
+			</view>
+			<view class="margin-top">
+				<view>“组队吧”小程序公测版，提供了出行“组队”、“队伍内聊天”、“发布社交动态”等核心功能；“队伍”内部功能模块附带“天气查询”、“路线规划”等实用功能；用户可根据个人喜好自行修改底部导航条背景颜色与按钮音效
+				</view>
+				<view class="text-grey">（注：小程序页面部分样式采用了ColorUI提供的规范，该框架的原作者文晓港；“队伍内部”页面部分图标来源与阿里巴巴矢量库；如有侵权请联系我们）</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="cu-time margin-left-lg">版本 1.1.0</view>
+	<view class="cu-item">
+		<view class="content">
+			<view class="cu-capsule radius">
+				<view class="cu-tag bg-cyan">2020年9月27日</view>
+				<view class="cu-tag line-cyan">20:00</view>
+			</view>
+			<view class="margin-top">
+				<view>1.优化了图片加载速度</view>
+				<view>2.解决了聊天室的一些bug</view>
+				<view>3.优化了部分交互逻辑</view>
+				<view>4.添加了打卡功能</view>
+				<view>5.优化了活动通知与消息通知等功能的使用体验</view>
+				<view class="text-grey">（注：小程序页面部分样式采用了ColorUI提供的规范，该框架的原作者文晓港；“队伍内部”页面部分图标来源与阿里巴巴矢量库；如有侵权请联系我们）</view>
+			</view>
+		</view>
+	</view>
+
+</view>

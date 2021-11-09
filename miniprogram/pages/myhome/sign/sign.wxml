@@ -1,0 +1,47 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">每日签到</view>
+</cu-custom>
+<view class="calendar">
+  <view class='bcfff'>
+    <view class="weekName">
+      <view class="monday">一</view>
+      <view class="tuesday">二</view>
+      <view class="wednesday">三</view>
+      <view class="thursday">四</view>
+      <view class="friday">五</view>
+      <view class="saturday">六</view>
+      <view class="sunday">日</view>
+    </view>
+    <view class="week">
+
+      <!--填补空格-->
+      <view wx:for="{{nbsp}}" wx:key></view>
+      <!--循环日期-->
+      <!-- 当天以前 -->
+      <view wx:for="{{date-1}}" wx:key style="color:gainsboro;">
+        <text wx:if="{{arr[item+1]==item+1}}" style="color: #2ccecb;">{{item+1}}</text>
+        <text wx:else="">{{item+1}}</text>
+      </view>
+      <!-- 当天 -->
+      <view style="">
+        <text wx:if="{{is_qd}}" style="color: #2ccecb;">{{date}}</text>
+        <text wx:else="" style="">{{date}}</text>
+      </view>
+      <!-- 以后 -->
+      <view wx:for="{{monthDaySize-date}}" wx:key>{{item+date+1}}</view>
+    </view>
+  </view>
+  <view class="calendarSign">
+    <image bindtap="calendarSign" class='btnimg' src='../../../images/icon.png'></image>
+  </view>
+</view>
+<!-- 签到成功 -->
+<view class='zhegai' bindtap='quxiaoQd' hidden="{{hiddenName}}"></view>
+<view class='successqd' hidden="{{hiddenName}}">
+  <view class='qdtitle'>签到成功</view>
+  <view class='qdcontent' wx:if="{{is_qd}}">今天已经签过了~</view>
+  <view class='qdcontent' wx:else>签到成功，获得积分+1！</view>
+  <view class='queding' bindtap='quxiaoQd' wx:if="{{!is_qd}}">确 定</view>
+  <view class='queding' bindtap='hiddenQd' wx:if="{{is_qd}}">关 闭</view>
+</view> 

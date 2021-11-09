@@ -1,18 +1,139 @@
 /**index.wxss**/
-.container{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #4D8AD7;
-  color: #fff;
-  font-size: 18px;
-  padding-top: 200rpx;
-  padding-left: 150rpx;
- 
+@import "../../../style/iconfont.wxss";
+page {
+  background-color: white;
 }
-.container text{
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
+.weather {
+  height: 110px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #FFF;
+  padding: 5PX 15px;
+  display: flex;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.weather>view {
+  flex: 1;
+}
+
+.weather>view>view {
+  margin: 5px 0;
+}
+
+.yesterday {
+  background-color: #30BCAF;
+}
+
+.today {
+  background-color: #78A4be;
+}
+
+.tomorrow {
+  background-color: #FCB654;
+}
+
+.location,
+.cond_txt {
+  font-size: 14px;
+}
+
+.date,
+.tmp {
+  font-weight: bold;
+}
+
+.weather_icon {
+  text-align: center;
+  height: 65px;
+}
+
+.weather_icon image {
+  width: 75px;
+  height: 100%;
+}
+
+.lastUpdateDate {
+  font-size: 10px;
+  text-align: center;
+}
+
+.weui-grids {
+  border-top: 1rpx solid #d9d9d9;
+  border-left: 1rpx solid #d9d9d9;
+  overflow: hidden
+}
+
+.weui-grid {
+  position: relative;
+  float: left;
+  padding: 20px 10px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  border-right: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9
+}
+
+.weui-grid_active {
+  background-color: #ececec
+}
+
+.weui-grid__icon {
   display: block;
-  margin:20px;
+  text-align: center;
+  font-size: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.weui-grid__label {
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+  color: #6e7272;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+
+.life-box {
+  margin-top: 10px;
+  border-radius: 10px;
+  background: #fff;
+  display: block;
+  width: 100%;
+}
+
+.life {
+  font-size: 16px;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.local {
+  border-radius: 10px;
+  background: #fff;
+  display: block;
+  width: 100%;
+}
+
+.local-img {
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
 }

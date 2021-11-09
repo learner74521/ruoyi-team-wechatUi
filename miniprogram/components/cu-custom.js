@@ -5,11 +5,12 @@ Component({
    */
   options: {
     addGlobalClass: true,
-    multipleSlots: true
+    multipleSlots: true,
   },
   /**
    * 组件的对外属性
    */
+  
   properties: {
     bgColor: {
       type: String,

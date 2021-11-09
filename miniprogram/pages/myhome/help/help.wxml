@@ -1,0 +1,27 @@
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">帮助</view>
+  </cu-custom>
+  <view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      <text class="cuIcon-title text-orange"></text>
+      常见问题
+    </view>
+  </view>
+
+  <view class="helper-box cu-list menu card-menu margin-top">
+    <view class="cu-list menu">
+
+      <view class="cu-item arrow" wx:for="{{questList}}" wx:key="index" data-index="{{index}}" bindtap="gotoDetial">
+        <view class="content">
+          <text class="cuIcon-question lg text-gray"></text>
+          <text class="text-grey">{{item.name}}</text>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+
+</scroll-view>

@@ -1,0 +1,18 @@
+/* pages/myhome/setting/setting.wxss */
+.switch-notification::after {
+  content: "\e66a";
+}
+
+.switch-notification::before {
+  content: "\e6db";
+}
+
+.switch-notification .wx-switch-input {
+	background: var(--red) !important;
+	border-color: var(--red) !important;
+}
+
+.switch-notification[checked] .wx-switch-input {
+	background: var(--blue) !important;
+	border-color: var(--blue) !important;
+}

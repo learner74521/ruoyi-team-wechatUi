@@ -1,0 +1,6 @@
+<view class="content-box" style="background-image:url({{backimg}})">
+  <!-- <image src="{{backimg}}"></image> -->
+  <view class="button-content">
+    <button class="cu-btn round line-blue button-hover" role="button" aria-disabled="false" bindtap="back">返回</button>
+  </view>
+</view>

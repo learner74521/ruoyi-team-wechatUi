@@ -1,0 +1,20 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">身份认证</view>
+</cu-custom>
+<view class="cu-list menu sm-border" >
+    <view class="cu-item {{wxIdCard==0?'arrow':''}}" bindtap="identityTap">
+      <view class="content">
+        <text class="cuIcon-card text-red"></text>
+        <text class="text-grey">身份证认证</text>
+      </view>
+      <view class="action text-green" wx:if="{{wxIdCard==1}}"><text class="cuIcon-roundcheck text-xl"></text>审核已通过</view>
+    </view>
+		 <view class="cu-item {{wxStuCard==0?'arrow':''}}" bindtap="stuCardTap">
+      <view class="content">
+        <text class="cuIcon-profilefill text-green"></text>
+        <text class="text-grey">学生认证</text>
+      </view>
+      <view class="action text-green" wx:if="{{wxStuCard==1}}"><text class="cuIcon-roundcheck text-xl"></text>审核已通过</view>
+    </view>
+</view>

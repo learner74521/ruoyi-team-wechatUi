@@ -1,0 +1,26 @@
+<!--pages/myhome/setting/setting.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">设置</view>
+</cu-custom>
+<view class="cu-list menu sm-border">
+	<view class="cu-item">
+		<view class="content padding-tb-sm">
+				<text class="cuIcon-musicfill text-blue"></text>
+				<text class="text--black">导航音效</text>
+		</view>
+		<view class="action">
+			<switch class="switch-notification sm" bindchange="switchTap" checked="{{checked}}"></switch>
+		</view>
+	</view>
+	<view class="cu-item">
+		<view class="content padding-tb-sm">
+			<text class="cuIcon-skinfill text-red"></text>
+			<text class="text-black">导航皮肤</text>
+		</view>
+		<view class="action">
+			<view class="cu-tag round {{navColor=='white'?'bg-cyan':'bg-gray'}} light" bindtap="navColorTap" data-color="white">雅白</view>
+			<view class="cu-tag round {{navColor=='black'?'bg-black':'bg-gray'}} light" bindtap="navColorTap" data-color="black">炫黑</view>
+		</view>
+	</view>
+</view>

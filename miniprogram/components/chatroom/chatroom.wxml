@@ -1,43 +1,74 @@
-<view class="chatroom">
-	<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-		<view slot="backText">返回</view>
-		<view slot="content">聊天室</view>
-	</cu-custom>
-	<!-- chats -->
-	<scroll-view class="body" scroll-y style="height:calc(100vh - {{CustomBar}}px)" scroll-top="{{scrollTop}}"  scroll-with-animation="{{scrollWithAnimation}}" bindscrolltoupper="onScrollToUpper" scroll-into-view="{{scrollToMessage}}">
-		<view wx:for="{{chats.newsList}}" wx:key="{{item.newsId}}" id="item-{{index}}" class="message {{openId == item.newsUserOpenid ? 'message__self' : 'message__right'}}">
-			<image class="avatar" src="{{item.wxChatUserInfo.creatorAvatar}}" mode="scaleToFill"></image>
-			<view class="main">
-				<view class="nickname">{{item.wxChatUserInfo.creatorName}}</view>
-				<block wx:if="{{item.newsType === 'image'}}">
-					<view class="image-wrapper">
-						<image src="{{item.newsImage}}" data-fileid="{{item.newsImage}}" class="image-content"  mode="scallToFill" bindtap="onMessageImageTap"></image>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">聊天室</view>
+</cu-custom>
+<!-- chats -->
+<scroll-view class="body" scroll-y style="height:calc(100vh - {{CustomBar}}px)" scroll-top="{{scrollTop}}"
+	scroll-with-animation="{{scrollWithAnimation}}" bindscrolltoupper="onScrollToUpper"
+	scroll-into-view="{{scrollToMessage}}">
+	<view wx:for="{{chats}}" wx:key="{{item.newsId}}"
+		class="message padding-top {{openId == item.newsUserOpenid ? 'message__self' : 'message__right'}} ">
+		<image class="avatar" src="{{item.wxChatUserInfo.creatorAvatar}}" mode="scaleToFill"></image>
+		<view class="main">
+			<view class="nickname">{{item.wxChatUserInfo.creatorName}}</view>
+			<block wx:if="{{item.newsType === 'image'}}">
+				<view class="image-wrapper" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd"
+					bindlongtap="withdrawTap" bindtap="onMessageImageTap" data-index="{{index}}">
+					<image src="{{https+item.newsImage}}" data-fileid="{{https+item.newsImage}}" class="image-content"
+						mode="aspectFit"></image>
+				</view>
+			</block>
+			<block wx:elif="{{item.newsType === 'audio'}}">
+				<view class="text-wrapper" bindlongtap="withdrawTap" data-index="{{index}}">
+					<view class="text-content" bindtap="playTap" data-audio="{{https+item.newsImage}}" data-index="{{index}}"
+						wx:if="{{!isplay||audioIndex!=index}}">
+						<text class="cuIcon-playfill"></text><text class="padding-lr-sm cuIcon-all"></text>
 					</view>
-				</block>
-				<block wx:else>
-					<view class="text-wrapper">
-						<view class="text-content">{{item.newsContent}}</view>
+					<view class="text-content" bindtap="pauseTap" data-audio="{{https+item.newsImage}}" data-index="{{index}}"
+						wx:if="{{audioIndex==index&&isplay}}">
+						<text class="cuIcon-stop"></text><text class="padding-lr-sm cuIcon-all"></text>
 					</view>
-				</block>
+				</view>
+			</block>
+			<block wx:else>
+				<view class="text-wrapper" bindlongtap="withdrawTap" data-index="{{index}}">
+					<view class="text-content">{{item.newsContent}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+</scroll-view>
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" wx:if="{{userInfo}}">
+	<view class="action">
+		<text class="cuIcon-sound text-grey" bindtap="audioTap"></text>
+	</view>
+	<input class="solid-bottom solid-box bgcolor-gray" adjust-position="{{false}}" focus="{{false}}"
+		bindfocus="InputFocus" bindblur="InputBlur" maxlength="500" type="text" confirm-hold="{{false}}" cursor-spacing="10"
+		value="{{textInputValue}}" confirm-type="done" bindinput="onTextBindnput"></input>
+	<view class="action">
+		<text class="cuIcon-camera text-grey" bindtap="onChooseImage"></text>
+	</view>
+	<view class="action">
+		<text class="cuIcon-pullup text-darkturquoise" bindtap="onConfirmSendText"></text>
+	</view>
+</view>
+<view class="cu-bar foot" wx:if="{{!userInfo}}">
+	<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo">请先登录后参与聊天</button>
+</view>
+<!-- 录音弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white">
+			<view class="action"></view>
+			<view class="action text-blue" bindtap="hideModal">取消</view>
+		</view>
+		<view class="head">
+			<progress strokeWidth="4" percent="{{value}}" wx:if="{{showPg}}" color="#56B8DF"></progress>
+			<view class="dot {{isTouchStart==true?'dot-blowup':''}} {{isTouchEnd==true?'dot-zoomout':''}}"
+				style="display:{{isDot}}"></view>
+			<view class="record vertical-middle" bindtouchstart="recordStart" bindtouchend="recordTerm">
+				<text class="cuIcon-voice text-lg text-white"></text>
 			</view>
 		</view>
-		<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px" wx:if="{{userInfo}}">
-			<view class="action">
-				<text class="cuIcon-sound text-grey"></text>
-			</view>
-			<input class="solid-bottom solid-box bgcolor-gray" adjust-position="{{false}}" focus="{{false}}" bindfocus="InputFocus" bindblur="InputBlur" maxlength="300" type="text" confirm-hold="{{false}}" cursor-spacing="10" value="{{textInputValue}}" confirm-type="done" bindinput="onTextBindnput"></input>
-			<view class="action">
-				<text class="cuIcon-emoji text-grey"  bindtap="onChooseImage"></text>
-			</view>
-			<view class="action" wx:if="{{textInputValue==''}}">
-				<text class="cuIcon-roundaddfill text-grey"  bindtap="add" ></text>
-			</view>
-			<view class="action" wx:if="{{textInputValue!=''}}">
-				<text class="cuIcon-pullup text-darkturquoise"  bindtap="onConfirmSendText" ></text>
-			</view>
-		</view>
-		<view class="cu-bar foot" wx:if="{{!userInfo}}">
-			<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo">请先登录后参与聊天</button>
-		</view>
-	</scroll-view>
+	</view>
 </view>

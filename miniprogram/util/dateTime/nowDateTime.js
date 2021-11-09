@@ -19,6 +19,16 @@ function getNewDateTime() {
     nowDateTime = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
   return nowDateTime;
 }
+
+function getNewDate() {
+  var date = new Date(),
+    year = date.getFullYear(),
+    month = withData(date.getMonth() + 1),
+    day = withData(date.getDate()),
+    nowDateTime = year + "-" + month + "-" + day;
+  return nowDateTime;
+}
+
 module.exports = {
-  getNewDateTime: getNewDateTime
+  getNewDateTime,getNewDate
 }

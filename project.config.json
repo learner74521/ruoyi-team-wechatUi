@@ -1,115 +1,135 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"appid": "wx392d9f5131b171c7",
-	"projectname": "%E7%BB%84%E9%98%9F%E5%90%A7",
-	"libVersion": "2.12.0",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 27,
-			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "pages/bottomnav/bottomnav",
-					"pathName": "pages/bottomnav/bottomnav",
-					"query": "导航测试",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myhome/home/home",
-					"pathName": "pages/myhome/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/im/room/room",
-					"pathName": "pages/im/room/room",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "游戏模块",
-					"pathName": "pages/plazahome/gameteam/gameteam",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/map/map",
-					"pathName": "pages/map/map",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/map/weather/weather",
-					"pathName": "pages/map/weather/weather",
-					"scene": null
-				}
-			]
-		}
-	}
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "appid": "wx392d9f5131b171c7",
+  "projectname": "%E7%BB%84%E9%98%9F%E5%90%A7",
+  "libVersion": "2.12.0",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 27,
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "pages/bottomnav/bottomnav",
+          "pathName": "pages/bottomnav/bottomnav",
+          "query": "导航测试",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myhome/home/home",
+          "pathName": "pages/myhome/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/im/room/room",
+          "pathName": "pages/im/room/room",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "游戏模块",
+          "pathName": "pages/plazahome/gameteam/gameteam",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/map/map",
+          "pathName": "pages/map/map",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/map/weather/weather",
+          "pathName": "pages/map/weather/weather",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/findhome/sendShare/sendShare",
+          "pathName": "pages/findhome/sendShare/sendShare",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/myhome/idCard/identity/identity",
+          "pathName": "pages/myhome/idCard/identity/identity",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

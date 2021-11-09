@@ -1,0 +1,31 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">推荐组队</view>
+</cu-custom>
+<view class="content-box">
+	<block wx:for="{{sysNewsList}}">
+		<view class="cu-card case no-card margin-tb-sm" data-index="{{index}}" bindtap="topage">
+			<view class="cu-item shadow">
+				<view class="image">
+					<image src="{{https+item.sysImage}}" mode="widthFix" class="height-160"></image>
+					<view class="cu-tag text-df bg-cyan" wx:if="{{item.sysExist==1}}">进行中</view>
+					<view class="cu-tag text-df bg-grey" wx:else>已结束</view>
+					<view class="cu-bar bg-shadeBottom">
+						<text class="text-cut">{{item.sysIntroduce}}</text>
+					</view>
+				</view>
+				<view class="cu-list menu-avatar">
+					<view class="cu-item">
+						<view class="cu-avatar round lg" style="background-image:url({{logoHttps}});"></view>
+						<view class="content flex-sub">
+							<view class="text-grey">{{item.sysName}}</view>
+							<view class="text-gray text-sm flex justify-between">
+								{{item.createTime}}
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>

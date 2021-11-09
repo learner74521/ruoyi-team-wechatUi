@@ -1,0 +1,44 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">创建你的队伍</view>
+</cu-custom>
+<block wx:if="{{sysInfo.sysImage}}">
+  <image src='{{https+sysInfo.sysImage}}' mode='widthFix' class='response height-160'></image>
+</block>
+<form bindsubmit="formSubmit">
+  <view class="cu-form-group margin-top">
+    <view class="title">队伍名称</view>
+    <input maxlength='20' placeholder="队伍名称" name="roomName"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">活动类型</view>
+    <picker name="roomTypeId" bindchange="PickerChange" value="0" range="{{roomTypeId}}">
+      <view class="picker">
+        旅游
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">截止日期</view>
+    <picker name="endTime" mode="date" value="{{date}}" start="{{date}}" end="{{maxdate}}" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group margin-top" bindtap="getLocation">
+    <view class="title">官方指定地点</view>
+    <input disabled type="text" value="{{sysInfo.sysSite}}"></input>
+  </view>
+  <view class="cu-form-group align-start margin-top">
+    <view class="title">队伍说明</view>
+    <textarea maxlength='200' name="roomIntroduce" maxlength="-1" disabled="{{modalName!=null}}"
+      bindinput="textareaBInput" placeholder="队伍目的、出行地点等"></textarea>
+  </view>
+  <view class="cu-form-group margin-top" hidden="true">
+    <input type="text" value="{{useropenid}}" name="creatorOpenid"></input>
+  </view>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-green lg shadow margin-top" formType="submit">提交</button>
+  </view>
+</form>

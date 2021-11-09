@@ -1,0 +1,5 @@
+/* pages/myhome/idCard/idCard.wxss */
+.text-xl{
+  font-size: 13pt;
+  vertical-align: middle;
+}

@@ -1,5 +1,8 @@
 // pages/myhome/home/home.js
 const app = getApp();
+const imageUrl = require("../../../util/imageUrl/imageUrl.js");
+const dataUrl = require("../../../util/dataUrl/dataUrl.js");
+const request = require("../../../util/request/request.js");
 Component({
   options: {
     addGlobalClass: true,
@@ -11,72 +14,159 @@ Component({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
-    mycard:["身份认证","学生认证","真实认证"],
-    bgImage:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgImageUrl-2020/home1.jpg?sign=2e1dc24ddcb2713bf2c15de58425979f&t=1586869313",
-    bgGif:"https://7778-wx-teamyml-2020-1301686336.tcb.qcloud.la/bgGifUrl-2020/wave.gif?sign=75e9f4470ba31910da925cba207ad5f1&t=1586869837",
-    infoCard:false,
-    infoVip:true,
-    iconList: [{
-      icon: 'picfill',
+    mycard: ["身份认证","学生认证", "真实认证"],
+    bgImage: imageUrl.home1ImageUrl,
+    bgGif: imageUrl.wareGifUrl,
+    infoCard: 0,
+    infoVip: 0,
+    iconList: [
+    //   {
+    //   icon: 'vip',
+    //   color: 'orange',
+    //   badge: 1,
+    //   name: 'vip',
+    //   navPage: 'vip'
+    // },
+     {
+      icon: 'refund',
       color: 'red',
       badge: 0,
-      name: '上传'
-    }, {
-      icon: 'vip',
-      color: 'orange',
-      badge: 1,
-      name: 'vip'
+      name: '打卡',
+      navPage: 'sign'
     }, {
       icon: 'addressbook',
       color: 'yellow',
       badge: 0,
-      name: '身份认证'
+      name: '身份认证',
+      navPage: 'idCard'
     }, {
-      icon: 'noticefill',
+      icon: 'group',
       color: 'olive',
-      badge: 22,
-      name: '通知'
-    }, {
-      icon: 'warnfill',
+      badge: 1,
+      name: '推荐组队',
+      navPage: 'sysNews'
+    },
+     {
+      icon: 'formfill',
       color: 'cyan',
       badge: 0,
-      name: '举报'
-    }, {
+      name: '版本日志',
+      navPage: 'log'
+    }, 
+    {
       icon: 'questionfill',
       color: 'blue',
       badge: 0,
-      name: '帮助'
+      name: '帮助',
+      navPage: 'help'
     }],
+
+  },
+  methods: {
+    //设置按钮
+    SetPage() {
+      wx.navigateTo({
+        url: '../myhome/setting/setting',
+      })
+    },
    
-  },
-methods:{
-  SetPage(){
+      handleContact (e) {
+          console.log(e.detail.path)
+          console.log(e.detail.query)
+      },
+
+    //转跳客服  
+    serviceTap() {
+      wx.navigateTo({
+        url: 'url',
+      })
+    },
+    navPageTap(e) {
+      var page=e.currentTarget.dataset.page
+      if(page=='vip'){
+            wx.showToast({
+              title: 'vip暂未开通！',
+              icon: 'none',
+              duration:2000
+            })
+      }else if(page=='idCard'){
+        wx.navigateTo({
+          url: "../myhome/"+page+"/"+page+"?card="+JSON.stringify(this.data.card),//传送已经认证的身份
+        })
+      }else{
+        wx.navigateTo({
+          url: "../myhome/"+page+"/"+page,
+        })
+      }
+    },
+   bugBackTap(e){
     wx.navigateTo({
-      url: 'url',
+      url: "../myhome/bugBack/bugBack",
     })
-  },
-  serviceTap(){
+   },
+   aboutTap(e){
     wx.navigateTo({
-      url: 'url',
+      url: "../myhome/about/about",
     })
-  }
-},
+   },
+   joinTap(e){
+    wx.navigateTo({
+      url: "../myhome/join/join",
+    })
+   }
+  },
+
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      var userInfo=app.globalData.userInfo;
+      var that=this
+      var userInfo = app.globalData.userInfo;
       this.setData({
-        userInfo:userInfo
-      })  
-      console.log(userInfo)
+        userInfo: userInfo
+      })
+      var url=dataUrl.wxuserUrl
+      var data={
+        wxOpenid:app.globalData.openid
+      }
+      request.request_json_post(url,data).then(res=>{
+        console.log(res.rows[0].wxStuCard)
+        var infoCard
+        if(res.rows[0].wxStuCard==1){
+          infoCard= 1
+        }else if(res.rows[0].wxIdCard==1&&res.rows[0].wxStuCard!=1){
+          infoCard= 2
+        }else{
+          infoCard= 0
+        }
+        var card={
+          "wxStuCard":res.rows[0].wxStuCard,
+          "wxIdCard":res.rows[0].wxIdCard
+        }
+        that.setData({
+          infoVip:res.rows[0].wxVip,
+          infoCard:infoCard,
+          wxStuCard:res.rows[0].wxStuCard,
+          card:card
+        })
+      })
     },
-    moved: function () {console.log("moved") },
-    detached: function () { console.log("detached")},
+    moved: function () {
+      console.log("moved")
+    },
+    detached: function () {
+      console.log("detached")
+    },
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
-    show: function () {console.log("show") },
-    hide: function () {console.log("hide") },
-    resize: function () { console.log("resize")},
+    show: function () {
+      console.log("show")
+    },
+    hide: function () {
+      console.log("hide")
+    },
+    resize: function () {
+      console.log("resize")
+    },
   }
 })

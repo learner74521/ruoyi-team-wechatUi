@@ -1,0 +1,24 @@
+/* miniprogram/pages/myhome/help/helpDetail/helpDetail.wxss */
+.question-content {
+  margin: auto;
+  width: 90%;
+}
+
+#content {
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+#back-content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 200rpx;
+}
+
+#back-content button {
+  background-color: #1396E3;
+  position: relative;
+  width: 400rpx;
+  margin: auto;
+}

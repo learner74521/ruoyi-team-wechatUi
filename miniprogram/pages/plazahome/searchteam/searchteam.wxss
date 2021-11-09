@@ -1,0 +1,88 @@
+/* pages/plazahome/searchteam/searchteam.wxss */
+
+
+.team-list-content {
+  margin: auto;
+  width: 90%;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.team-content {
+  /* border-radius: 0 80rpx 80rpx 0; */
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-top: 25rpx;
+  height: 230rpx;
+  background-color: #fff;
+  /* box-shadow: 1px 0 5px 0.5px rgba(0, 0, 0, 0.1); */
+}
+
+.team-image {
+  display: inline-block;
+  height: 190rpx;
+  width: 190rpx;
+  margin-right: 20rpx;
+  background-position: center;
+  background-size: cover;
+  /* background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1600091128601&di=3dedccfaee10b788daacb93d13ea384f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F05%2F20180705112851_WPN4w.thumb.700_0.jpeg"); */
+}
+
+.team-text {
+  display: inline-block;
+  width: 74%;
+
+}
+
+.team-name {
+  /* border-bottom: 0.2px solid #36B44C; */
+  font-size: 11pt;
+  font-weight: bold;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.team-introduction {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bottom-height {
+  height: 150rpx;
+}
+
+.team-num {
+  display: inline-block;
+
+}
+
+/* 信息文字大小 */
+.team-introduction,
+.endtime,
+.team-flag {
+  color: gray;
+  font-size: 9pt;
+}
+
+.tag-content {
+  margin-left: 20rpx;
+  padding: 2px 4px;
+  color: #fff;
+  display: inline;
+  border-radius: 10rpx;
+  background-color: #7ac8c4;
+}
+
+
+
+.top-search-content .action {
+  width: 150rpx;
+}

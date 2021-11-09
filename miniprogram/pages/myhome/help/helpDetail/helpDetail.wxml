@@ -1,0 +1,21 @@
+<!--miniprogram/pages/myhome/help/helpDetail/helpDetail.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{question.name}}</view>
+</cu-custom>
+
+<view id="content">
+  <view class="padding-xl radius shadow-warp bg-white margin-top question-content">
+    <view class="flex-sub text-left">
+      <view class="solid-bottom text-df padding">{{question.content}}</view>
+    </view> 
+  </view>
+</view>
+<!-- <view class="cu-bar btn-group">
+  <button class="cu-btn bg-green shadow-blur round">有帮助</button>
+  <button class="cu-btn bg-green shadow-blur round">无帮助</button>
+</view> -->
+
+<view id="back-content">
+  <button class="cu-btn bg-green shadow-blur round lg button-hover" bindtap="back">返回</button>
+</view>

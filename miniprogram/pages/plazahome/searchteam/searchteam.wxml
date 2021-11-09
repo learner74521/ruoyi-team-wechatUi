@@ -1,0 +1,34 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">搜索队伍</view>
+</cu-custom>
+
+<form bindsubmit="formSubmit">
+  <view class="cu-bar search bg-white top-search-content">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索队伍名称、队伍ID" confirm-type="search" name="roomName"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round" formType="submit">搜索</button>
+    </view>
+  </view>
+</form>
+
+
+
+<view class="team-list-content">
+  <view class="flex team-content" wx:for="{{teamList}}" data-index="{{index}}" bindtap="toDetail">
+    <view class="team-image" style="background-image: url({{item.wxChatUserInfo.creatorAvatar}});"></view>
+    <view class="team-text">
+      <view class="team-name">{{item.roomName}}</view>
+      <view class="team-introduction">{{item.roomIntroduce}}</view>
+      <!-- <view class="team-introduction">介绍介绍，队伍的介绍，测试文字，测试文字，测试文字，测试文字，队伍的介绍，测试文字，队伍的介绍，测试文案</view> -->
+      <view class="team-flag">
+        <text class="cuIcon-friend text-blue"></text>人数:{{item.memberNum+1}}<view class="tag-content text-xs">
+          {{typeList[item.roomTypeId]}}</view>
+      </view>
+      <view class="endtime"><text class="cuIcon-time text-blue"></text>解散时间:2020年10月8日</view>
+    </view>
+  </view>
+</view>

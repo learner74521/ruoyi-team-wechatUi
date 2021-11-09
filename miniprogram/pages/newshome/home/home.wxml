@@ -1,30 +1,34 @@
-	<cu-custom bgColor="bg-gradual-green">
-		<view slot="content">消息</view>
-	</cu-custom>
-	<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
-		<view class="cu-bar bg-white solid-bottom">
+<cu-custom bgImage="{{bgTopUrl}}">
+	<view slot="content">消息</view>
+</cu-custom>
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text class="cuIcon-title text-orange "></text> 消息列表
+		</view>
+	</view>
+	<view class="cu-list menu-avatar">
+		<view class="cu-item cu-item-sm {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{newsList}}" wx:key
+			bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd"
+			data-target="move-box-{{index}}" bindtap="Navigator" data-index="{{index}}">
+			<view class="cu-avatar round lg" style="background-image:url({{item.wxChatUserInfo.creatorAvatar}});"></view>
+			<view class="content">
+				<view class="text-grey">{{item.roomName}}</view>
+				<view class="text-gray text-sm" wx:if="{{item.wxChatUnread.unreadNumber!=0}}">
+					<text class="cuIcon-infofill text-grey"></text>未读消息</view>
+				<view class="text-gray text-sm" wx:else>
+				  温馨提示：左滑可快速进入队伍</view>
+			</view>
 			<view class="action">
-				<text class="cuIcon-title text-orange "></text> 消息列表
-			</view>
-		</view>
-		<view class="cu-list menu-avatar">
-			<view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" bindtap="Navigator">
-				<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
-				<view class="content">
-					<view class="text-grey">组队吧</view>
-					<view class="text-gray text-sm">
-						<text class="cuIcon-infofill text-grey"></text> 未读消息</view>
-				</view>
-				<view class="action">
-					<view class="text-grey text-xs">22:20</view>
-					<view class="cu-tag round bg-red sm" wx:if="{{badge!=0}}">
-						{{badge>99?"99+":badge}}
-					</view>
-				</view>
-				<view class="move">
-					<view class="bg-grey">置顶</view>
-					<view class="bg-red">删除</view>
+				<view class="text-grey text-xs">{{item.wxChatUnread.updateTime}}</view>
+				<view class="cu-tag round bg-red sm" wx:if="{{item.wxChatUnread.unreadNumber!=0}}">
+					{{item.wxChatUnread.unreadNumber>99?"99+":item.wxChatUnread.unreadNumber}}
 				</view>
 			</view>
+			<view class="move" catchtap="intoTeamTap" data-index="{{index}}">
+				<view class="bg-cyan">队伍</view>
+			</view>
 		</view>
-	</scroll-view>
+	</view>
+</scroll-view>
+<view style="height:7vh"></view>
